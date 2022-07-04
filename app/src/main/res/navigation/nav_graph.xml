@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/satteRabatteFragment">
+    <fragment
+        android:id="@+id/satteRabatteFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.AngeboteFragment"
+        android:label="AngeboteFragment" />
+    <fragment
+        android:id="@+id/kategorienFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.KategorienFragment"
+        android:label="KategorienFragment" />
+    <fragment
+        android:id="@+id/warenkorbFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.WarenkorbFragment"
+        android:label="WarenkorbFragment" />
+    <fragment
+        android:id="@+id/auftragFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.AuftragFragment"
+        android:label="AuftragFragment" />
+    <fragment
+        android:id="@+id/mehrFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.MehrFragment"
+        android:label="MehrFragment" />
+
+</navigation>

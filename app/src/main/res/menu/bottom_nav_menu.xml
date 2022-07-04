@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/satteRabatteFragment"
+        android:icon="@drawable/nav_rabatt"
+        android:title="Angebote"/>
+
+    <item
+        android:id="@+id/kategorienFragment"
+        android:icon="@drawable/nav_kategorie"
+        android:title="Kategorien" />
+
+    <item
+        android:id="@+id/warenkorbFragment"
+        android:icon="@drawable/nav_einkaufswagen"
+        android:title="Warenkorb" />
+
+    <item
+        android:id="@+id/auftragFragment"
+        android:icon="@drawable/nav_auftrag"
+        android:title="Aufträge" />
+
+    <item
+        android:id="@+id/mehrFragment"
+        android:icon="@drawable/nav_mehr"
+        android:title="Mehr" />
+
+
+
+</menu>
