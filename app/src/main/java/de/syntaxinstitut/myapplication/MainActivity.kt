@@ -33,8 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // Das Binding zur XML-Datei
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // Die Navigationsleiste am unteren Bildschirmrand wird eingerichtet
         val navView: BottomNavigationView = binding.BottomNavigationView

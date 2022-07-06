@@ -7,11 +7,19 @@
     <fragment
         android:id="@+id/satteRabatteFragment"
         android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.AngeboteFragment"
-        android:label="AngeboteFragment" />
+        android:label="AngeboteFragment" >
+        <action
+            android:id="@+id/action_satteRabatteFragment_to_kategorienFragment"
+            app:destination="@id/kategorienFragment" />
+    </fragment>
     <fragment
         android:id="@+id/kategorienFragment"
         android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.KategorienFragment"
-        android:label="KategorienFragment" />
+        android:label="KategorienFragment" >
+        <action
+            android:id="@+id/action_kategorienFragment_to_warenkorbFragment"
+            app:destination="@id/warenkorbFragment" />
+    </fragment>
     <fragment
         android:id="@+id/warenkorbFragment"
         android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.WarenkorbFragment"
