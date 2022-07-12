@@ -8,11 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinstitut.myapplication.R
-import de.syntaxinstitut.myapplication.datamodels.Artikel
+import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 
 class AngeboteAdapter(
     private val context: Context,
-    private val dataset: List<Artikel>
+    private val dataset: List<ArtikelData>
 ) : RecyclerView.Adapter<AngeboteAdapter.ItemViewHolder>() {
 
     //Klassen Variablen

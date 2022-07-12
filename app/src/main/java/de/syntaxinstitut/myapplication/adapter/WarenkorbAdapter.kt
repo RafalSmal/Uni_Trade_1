@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinstitut.myapplication.R
-import de.syntaxinstitut.myapplication.datamodels.Artikel
+import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 
 class WarenkorbAdapter(
     private val context: Context,
-    private val dataset: List<Artikel>
+    private val dataset: List<ArtikelData>
 ) : RecyclerView.Adapter<WarenkorbAdapter.ItemViewHolder>() {
 
     //Klassen Variablen
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val warenkorbArtikel = itemView.findViewById<TextView>(R.id.price_card)
-        val warenkorbAnzahl = itemView.findViewById<TextView>(R.id.quantity_card)
-        val warenkorbPreis = itemView.findViewById<TextView>(R.id.price_card)
+        val warenkorbArtikel = itemView.findViewById<TextView>(R.id.list_warenkorb_artikel_text)
+        val warenkorbAnzahl = itemView.findViewById<TextView>(R.id.list_warenkorb_quantity_text)
+        val warenkorbPreis = itemView.findViewById<TextView>(R.id.list_warenkorb_price_text)
     }
 
     override fun getItemCount(): Int {
@@ -32,6 +32,9 @@ class WarenkorbAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val warenkorb = dataset[position]
+        holder.warenkorbArtikel.text = context.resources.getString(warenkorb.id)
+        holder.warenkorbAnzahl.text = context.resources.getString(warenkorb.id)
+        holder.warenkorbPreis.text = context.resources.getString(warenkorb.id)
     }
 }

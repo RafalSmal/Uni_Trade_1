@@ -1,25 +1,28 @@
 package de.syntaxinstitut.myapplication.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinstitut.myapplication.R
-import de.syntaxinstitut.myapplication.datamodels.Artikel
-import java.util.*
+import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.datamodels.KategorienData
 
 class KategorienAdapter(
-    private val context: Context,
-    private val dataset: List<Artikel>
+    private val dataset: List<KategorienData>, private val clickListener: (KategorienData) -> Unit
 ) : RecyclerView.Adapter<KategorienAdapter.ItemViewHolder>() {
 
     //Klassen Variablen
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val categoryName = itemView.findViewById<TextView>(R.id.list_Kategorie_ButtonPic_text)
         val categoryImage = itemView.findViewById<ImageView>(R.id.list_Kategorie_ButtonPic)
+
     }
 
     override fun getItemCount(): Int {
@@ -33,9 +36,12 @@ class KategorienAdapter(
     }
 
     override fun onBindViewHolder(holder: KategorienAdapter.ItemViewHolder, position: Int) {
-        //var kategorie = dataset[position]
-       // holder.categoryName.text = context.resources.getString(Category.productText)
-       // holder.categoryImage.setImageResource(Category.image)
+        val kategorie = dataset[position]
+        holder.categoryName.text = kategorie.name
+//        holder.categoryImage.setImageResource(kategorie.image)
+        holder.categoryImage.setOnClickListener {
+            clickListener(kategorie)
+        }
 
     }
 }

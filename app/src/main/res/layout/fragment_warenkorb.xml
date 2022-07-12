@@ -1,166 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="409dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="338dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="393dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" >
+    <data>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    </data>
 
-        <ImageButton
-            android:id="@+id/imageButton"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/tomaten" />
+            android:layout_marginStart="159dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="159dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/applogo" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/Warenkorb_uberschrift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="163dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="179dp"
+            android:text="Warenkorb"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.414"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-            <TextView
-                android:id="@+id/Product_card"
-                android:layout_width="73dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/quantity_card"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.645"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:text="Produkt" />
-
-            <TextView
-                android:id="@+id/quantity_card"
-                android:layout_width="73dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="72dp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/price_card"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.645"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.292"
-                tools:text="Anzahl" />
-
-            <TextView
-                android:id="@+id/price_card"
-                android:layout_width="73dp"
-                android:layout_height="18dp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.645"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.912"
-                tools:text="Preis" />
-
-            <EditText
-                android:id="@+id/editTextTextMultiLine"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="59dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                app:layout_constraintBottom_toTopOf="@+id/quantity_cardView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/Product_card"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.088" />
-
-            <EditText
-                android:id="@+id/product_detail_cardView"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="59dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/Product_card"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.014"
-                tools:text="Tomaten in Öl eingelegt / 330g Glas" />
-
-            <EditText
-                android:id="@+id/quantity_cardView"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="32dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/quantity_card"
-                app:layout_constraintTop_toBottomOf="@+id/product_detail_cardView"
-                tools:text="50" />
-
-            <EditText
-                android:id="@+id/price_detail_cardView"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/price_card"
-                app:layout_constraintTop_toBottomOf="@+id/quantity_cardView"
-                app:layout_constraintVertical_bias="1.0"
-                tools:text="99,95 Netto" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="159dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/applogo" />
-
-    <TextView
-        android:id="@+id/Warenkorb_uberschrift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="163dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="179dp"
-        android:text="Warenkorb"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.414"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/warenkorbRecycler"
+            android:layout_width="409dp"
+            android:layout_height="602dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Warenkorb_uberschrift" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
