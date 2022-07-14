@@ -19,7 +19,7 @@ class AngeboteAdapter(
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val productImageButton: ImageView = view.findViewById(R.id.list_articleImage_angebote_new)
         val productText: TextView = view.findViewById(R.id.artikelDescription_angeboteDetail)
-        val productPrice: TextView = view.findViewById((R.id.salePrice_angeboteDetail))
+        val productPrice: TextView = view.findViewById(R.id.salePrice_angeboteDetail)
     }
 
     override fun getItemCount(): Int {

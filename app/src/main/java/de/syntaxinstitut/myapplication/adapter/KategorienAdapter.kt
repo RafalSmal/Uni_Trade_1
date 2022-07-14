@@ -38,7 +38,7 @@ class KategorienAdapter(
     override fun onBindViewHolder(holder: KategorienAdapter.ItemViewHolder, position: Int) {
         val kategorie = dataset[position]
         holder.categoryName.text = kategorie.name
-//        holder.categoryImage.setImageResource(kategorie.image)
+        holder.categoryImage.setImageResource(kategorie.image)
         holder.categoryImage.setOnClickListener {
             clickListener(kategorie)
         }

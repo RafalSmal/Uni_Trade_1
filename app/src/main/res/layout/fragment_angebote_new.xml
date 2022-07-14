@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -20,6 +19,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/angebote_new"
+            android:layout_width="409dp"
+            android:layout_height="580dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <ImageView
             android:id="@+id/logo_AngeboteDetail"
             android:layout_width="wrap_content"
@@ -30,41 +40,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/applogo" />
 
-        <RadioButton
-            android:id="@+id/radio_neu_new"
+        <TextView
+            android:id="@+id/angeboteAngebote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="139dp"
-            android:text="Neu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/radio_angebote_new"
-            app:layout_constraintTop_toBottomOf="@+id/logo_AngeboteDetail" />
-
-        <RadioButton
-            android:id="@+id/radio_angebote_new"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="105dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="17dp"
             android:text="Angebote"
-            app:layout_constraintEnd_toStartOf="@+id/radio_neu_new"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/angebote_new"
+            app:layout_constraintEnd_toEndOf="@+id/logo_AngeboteDetail"
+            app:layout_constraintStart_toStartOf="@+id/logo_AngeboteDetail"
             app:layout_constraintTop_toBottomOf="@+id/logo_AngeboteDetail" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/angebote_new"
-            android:layout_width="409dp"
-            android:layout_height="596dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_angebote_new" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

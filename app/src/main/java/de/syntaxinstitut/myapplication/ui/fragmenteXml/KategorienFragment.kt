@@ -34,12 +34,12 @@ class KategorienFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val kategorien = listOf(
-            KategorienData("Gemüse", R.id.tomate_detail, KategorieDetailEnum.GEMUESE),
-            KategorienData("Obst", R.drawable.fruits, KategorieDetailEnum.OBST),
-            KategorienData("Fleisch", R.drawable.meat, KategorieDetailEnum.FLEISCH),
+            KategorienData("Gemüse", R.drawable.sweets, KategorieDetailEnum.GEMUESE),
+            KategorienData("Obst", R.drawable.sweets, KategorieDetailEnum.OBST),
+            KategorienData("Fleisch", R.drawable.sweets, KategorieDetailEnum.FLEISCH),
             KategorienData("Sweets", R.drawable.sweets, KategorieDetailEnum.SWEETS),
             KategorienData("Tiefkühl", R.drawable.pommes, KategorieDetailEnum.TIEFKUEHL),
-            KategorienData("Getränke", R.drawable.drinks, KategorieDetailEnum.GETRAENKE)
+            KategorienData("Getränke", R.drawable.sweets, KategorieDetailEnum.GETRAENKE)
 
         )
         binding.kategorieRecycler.adapter = KategorienAdapter(kategorien) {

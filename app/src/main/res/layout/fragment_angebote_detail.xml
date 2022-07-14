@@ -33,28 +33,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/applogo" />
 
-    <RadioButton
-        android:id="@+id/radio_neu_new"
+    <TextView
+        android:id="@+id/angeboteAngebote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="139dp"
-        android:text="Neu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radio_angebote_new"
-        app:layout_constraintTop_toBottomOf="@+id/logo_AngeboteDetail" />
-
-    <RadioButton
-        android:id="@+id/radio_angebote_new"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="17dp"
         android:text="Angebote"
-        app:layout_constraintEnd_toStartOf="@+id/radio_neu_new"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/logo_AngeboteDetail"
+        app:layout_constraintStart_toStartOf="@+id/logo_AngeboteDetail"
         app:layout_constraintTop_toBottomOf="@+id/logo_AngeboteDetail" />
 
 
