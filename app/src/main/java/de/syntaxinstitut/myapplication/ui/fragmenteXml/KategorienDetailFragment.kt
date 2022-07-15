@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainer
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import de.syntaxinstitut.myapplication.MainViewModel
 import de.syntaxinstitut.myapplication.R
@@ -58,6 +59,10 @@ class KategorienDetailFragment : Fragment() {
         binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(filterArtikel) {
 
         }
+
+      //  viewModel.articleCounter.observe(viewLifecycleOwner, Observer {
+
+      //  })
 
     }
 }

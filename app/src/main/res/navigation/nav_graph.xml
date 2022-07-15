@@ -36,5 +36,9 @@
             android:name="kategorieDetail"
             app:argType="de.syntaxinstitut.myapplication.data.KategorieDetailEnum" />
     </fragment>
+    <fragment
+        android:id="@+id/homescreenFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.HomescreenFragment"
+        android:label="HomescreenFragment" />
 
 </navigation>

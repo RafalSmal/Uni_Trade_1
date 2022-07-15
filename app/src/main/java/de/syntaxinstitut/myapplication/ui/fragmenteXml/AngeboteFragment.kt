@@ -8,8 +8,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.AngeboteAdapter
+import de.syntaxinstitut.myapplication.adapter.KategorienDetailAdapter
 import de.syntaxinstitut.myapplication.data.DataSource
 import de.syntaxinstitut.myapplication.databinding.FragmentAngeboteNewBinding
+import java.util.*
 
 
 class AngeboteFragment : Fragment() {
@@ -38,4 +40,6 @@ class AngeboteFragment : Fragment() {
     }
 
 }
+
+
 

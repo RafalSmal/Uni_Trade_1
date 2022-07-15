@@ -2,6 +2,7 @@ package de.syntaxinstitut.myapplication
 
 import android.content.ClipData
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import de.syntaxinstitut.myapplication.data.DataSource
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
@@ -21,5 +22,6 @@ class MainViewModel : ViewModel() {
         }
         return filteredList
     }
+
 }
 
