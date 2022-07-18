@@ -1,4 +1,4 @@
-package de.syntaxinstitut.myapplication.ui.fragmenteXml
+package de.syntaxinstitut.myapplication.ui.auftrag
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -13,23 +13,23 @@ import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 
 class AngeboteAdapter(
     private val context: Context,
-    private val dataset: List<ArtikelData>
-) : RecyclerView.Adapter<AngeboteAdapter.ItemViewHolder>() {
+    private val dataset: List<ArtikelData>,
+    private val clickListener: (ArtikelData,Boolean) -> Unit
 
-    private var articleCounter = 0
+) : RecyclerView.Adapter<AngeboteAdapter.ItemViewHolder>() {
 
     //Klassen Variablen
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val productImageView: ImageView = view.findViewById(R.id.list_articleImage_angebote_new)
         val productText: TextView = view.findViewById(R.id.artikelDescription_angeboteDetail)
         val productPrice: TextView = view.findViewById(R.id.salePrice_angeboteDetail)
-        val detailCounterA : TextView = view.findViewById(R.id.addCard_Angebot)
-        val plusItemA : ImageButton = view.findViewById(R.id.plusItemAN)
-        val minusItemA : ImageButton = view.findViewById(R.id.minusItemAN)
+        val detailCounterA: TextView = view.findViewById(R.id.addCard_Angebot)
+        val plusItemA: ImageButton = view.findViewById(R.id.plusItemAN)
+        val minusItemA: ImageButton = view.findViewById(R.id.minusItemAN)
     }
 
     override fun getItemCount(): Int {
-         return dataset.size
+        return dataset.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -40,24 +40,33 @@ class AngeboteAdapter(
 
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val saleItem = dataset[position]
+
         fun changeBasket(value: Int) {
-            if (articleCounter == 0 && value < 0) {
+            if (saleItem.quantity == value && value < 0) {
                 return
             } else {
-                articleCounter += value
-                holder.detailCounterA.text = articleCounter.toString()
+                saleItem.quantity += value
+                holder.detailCounterA.text = saleItem.quantity.toString()
             }
         }
 
-        val saleItem = dataset[position]
-        holder.productPrice.text = saleItem.price.toString()+" €"
+
+        holder.productPrice.text = saleItem.price.toString() + " €"
         holder.productText.text = saleItem.productText.toString()
         holder.productImageView.setImageResource(saleItem.image)
-        holder.plusItemA.setOnClickListener{
+        holder.detailCounterA.text = saleItem.quantity.toString()
+        holder.plusItemA.setOnClickListener {
             changeBasket(1)
+            clickListener(saleItem,true)
         }
-        holder.minusItemA.setOnClickListener{
+        holder.minusItemA.setOnClickListener {
             changeBasket(-1)
+            if (saleItem.quantity == 0 ){
+                clickListener(saleItem,false)
+            }else{
+                clickListener(saleItem,true)
+            }
         }
 
     }

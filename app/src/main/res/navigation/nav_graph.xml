@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/satteRabatteFragment">
+    app:startDestination="@id/homescreenFragment">
     <fragment
         android:id="@+id/satteRabatteFragment"
-        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.AngeboteFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.angebote.AngeboteFragment"
         android:label="AngeboteFragment" />
     <fragment
         android:id="@+id/kategorienFragment"
-        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.KategorienFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.kategorien.KategorienFragment"
         android:label="KategorienFragment" >
         <action
             android:id="@+id/action_kategorienFragment_to_kategorienDetailFragment"
@@ -18,19 +18,19 @@
     </fragment>
     <fragment
         android:id="@+id/warenkorbFragment"
-        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.WarenkorbFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.warenkorb.WarenkorbFragment"
         android:label="WarenkorbFragment" />
     <fragment
         android:id="@+id/auftragFragment"
-        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.AuftragFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.auftrag.AuftragFragment"
         android:label="AuftragFragment" />
     <fragment
         android:id="@+id/mehrFragment"
-        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.MehrFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.mehr.MehrFragment"
         android:label="MehrFragment" />
     <fragment
         android:id="@+id/kategorienDetailFragment"
-        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.KategorienDetailFragment"
+        android:name="de.syntaxinstitut.myapplication.ui.kategorienDetail.KategorienDetailFragment"
         android:label="kategorienDetailFragment">
         <argument
             android:name="kategorieDetail"
@@ -38,7 +38,11 @@
     </fragment>
     <fragment
         android:id="@+id/homescreenFragment"
-        android:name="de.syntaxinstitut.myapplication.ui.fragmenteXml.HomescreenFragment"
-        android:label="HomescreenFragment" />
+        android:name="de.syntaxinstitut.myapplication.ui.homescreen.HomescreenFragment"
+        android:label="HomescreenFragment" >
+        <action
+            android:id="@+id/action_homescreenFragment_to_satteRabatteFragment"
+            app:destination="@id/satteRabatteFragment" />
+    </fragment>
 
 </navigation>

@@ -33,8 +33,8 @@ class WarenkorbAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val warenkorb = dataset[position]
-        holder.warenkorbArtikel.text = context.resources.getString(warenkorb.id)
-        holder.warenkorbAnzahl.text = context.resources.getString(warenkorb.id)
-        holder.warenkorbPreis.text = context.resources.getString(warenkorb.id)
+        holder.warenkorbArtikel.text = warenkorb.productText
+        holder.warenkorbAnzahl.text = warenkorb.quantity.toString()
+        holder.warenkorbPreis.text = warenkorb.price.toString()
     }
 }

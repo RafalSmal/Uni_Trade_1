@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     /** Bindet das XML-View mit der Klasse um auf die Elemente zugreifen zu können */
     private lateinit var binding: ActivityMainBinding
-    lateinit var navController : NavController
+    lateinit var navController: NavController
 
     /* -------------------- Lifecycle -------------------- */
 
@@ -40,20 +40,22 @@ class MainActivity : AppCompatActivity() {
 
         // Hier wird der Nav Controller zugewiesen und die Action Bar damit eingerichtet
         navController = findNavController(R.id.main_fragment)
-        NavigationUI.setupActionBarWithNavController(this, navController)
+//        NavigationUI.setupActionBarWithNavController(this, navController)
 
         // Richtet die Navigation Bar ein, sodass sie mit dem Nav Controller verknüpft ist
         navView.setupWithNavController(navController)
 
         navView.setOnItemReselectedListener {
-            Log.e("Was geht","Failed to")
+            Log.e("Was geht", "Failed to")
         }
     }
 
     /**
      * Diese Funktion sorgt dafür, dass man über den zurück Button in der Actionbar zurück kommt
      */
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
-    }
+//    override fun onSupportNavigateUp(): Boolean {
+//        return navController.navigateUp() || super.onSupportNavigateUp()
+//    }
+
+
 }

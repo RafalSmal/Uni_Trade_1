@@ -1,4 +1,4 @@
-package de.syntaxinstitut.myapplication.ui.fragmenteXml
+package de.syntaxinstitut.myapplication.ui.homescreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,6 +22,8 @@ class HomescreenFragment : Fragment() {
 
         return binding.root
     }
+
+
 
 }
 

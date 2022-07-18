@@ -1,4 +1,4 @@
-package de.syntaxinstitut.myapplication.ui.fragmenteXml
+package de.syntaxinstitut.myapplication.ui.kategorien
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.KategorienAdapter
-import de.syntaxinstitut.myapplication.data.DataSource
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
 import de.syntaxinstitut.myapplication.databinding.FragmentKategorienBinding
 import de.syntaxinstitut.myapplication.datamodels.KategorienData
