@@ -63,23 +63,22 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="80dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/artikelDescription_angeboteDetail"
-                app:layout_constraintVertical_bias="0.03"
+                app:layout_constraintVertical_bias="0.363"
                 app:srcCompat="@drawable/shoppingcard_add" />
 
             <TextView
                 android:id="@+id/addCard_Angebot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="104dp"
+                android:layout_marginEnd="32dp"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/minusItemAN"
-                app:layout_constraintEnd_toStartOf="@+id/plusItemAN"
-                app:layout_constraintTop_toTopOf="@+id/minusItemAN"
-                app:layout_constraintVertical_bias="0.513"
+                app:layout_constraintBottom_toBottomOf="@+id/plusItemAN"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/plusItemAN"
                 tools:text="10" />
 
             <ImageButton

@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var navController: NavController
 
+
     /* -------------------- Lifecycle -------------------- */
 
     /**
@@ -39,15 +40,14 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.BottomNavigationView
 
         // Hier wird der Nav Controller zugewiesen und die Action Bar damit eingerichtet
-        navController = findNavController(R.id.main_fragment)
-//        NavigationUI.setupActionBarWithNavController(this, navController)
+        navController = this.findNavController(R.id.main_fragment)
+        NavigationUI.setupActionBarWithNavController(this, navController)
 
         // Richtet die Navigation Bar ein, sodass sie mit dem Nav Controller verknüpft ist
+        NavigationUI.setupWithNavController(navView,navController)
         navView.setupWithNavController(navController)
 
-        navView.setOnItemReselectedListener {
-            Log.e("Was geht", "Failed to")
-        }
+        supportActionBar?.hide()
     }
 
     /**

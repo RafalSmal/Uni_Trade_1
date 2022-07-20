@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import de.syntaxinstitut.myapplication.MainViewModel
@@ -13,11 +14,14 @@ import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.KategorienDetailAdapter
 import de.syntaxinstitut.myapplication.data.DataSource
 import de.syntaxinstitut.myapplication.databinding.FragmentKategorienDetailBinding
+import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.util.BasketViewModel
 
 class KategorienDetailFragment : Fragment() {
     private lateinit var binding: FragmentKategorienDetailBinding
+    private val basketViewModel: BasketViewModel by activityViewModels()
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: KategorienDetailViewModel by viewModels()
     val args: KategorienDetailFragmentArgs by navArgs()
 
 
@@ -52,15 +56,26 @@ class KategorienDetailFragment : Fragment() {
         val filterArtikel =
             viewModel.filterByKategorie(unfilteredList = dataSourceArtikel, args.kategorieDetail)
 
-        binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(filterArtikel) {
+        val dataset = viewModel.getData(basketViewModel.getBasket())
 
+        binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(dataset){
+            partItem: ArtikelData,add:Boolean-> addOrRemoveFromBasket(partItem,add)
         }
 
-      //  viewModel.articleCounter.observe(viewLifecycleOwner, Observer {
+        //  viewModel.articleCounter.observe(viewLifecycleOwner, Observer {
 
-      //  })
+        //  })
 
     }
+
+    fun addOrRemoveFromBasket(artikelData: ArtikelData, add: Boolean) {
+        if (add) {
+            basketViewModel.addBasket(artikelData)
+        } else {
+            basketViewModel.removeBasket(artikelData)
+        }
+    }
+
 }
 
 

@@ -35,7 +35,6 @@ class AngeboteViewModel : ViewModel() {
                 found=false
             }
         }
-        Log.d("Hallo",angeboteChanged.toString())
         return angeboteChanged
     }
 

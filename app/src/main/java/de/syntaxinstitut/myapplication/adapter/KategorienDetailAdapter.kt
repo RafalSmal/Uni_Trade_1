@@ -2,6 +2,7 @@ package de.syntaxinstitut.myapplication.adapter
 
 
 import android.provider.ContactsContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +19,8 @@ import de.syntaxinstitut.myapplication.datamodels.KategorienData
 
 class KategorienDetailAdapter(
 
-
-    private val dataset: List<ArtikelData>, private val clickListener: (ArtikelData) -> Unit
+    private val dataset: List<ArtikelData>,
+    private val clickListener: (ArtikelData, Boolean) -> Unit
 ) : RecyclerView.Adapter<KategorienDetailAdapter.ItemViewHolder>() {
 
     private var articleCounter = 0
@@ -33,7 +34,6 @@ class KategorienDetailAdapter(
         val addCardKD = itemView.findViewById<ImageButton>(R.id.addCardKD)
         val deleteCardKD = itemView.findViewById<ImageButton>(R.id.outCardKD)
         val detailCounterKD = itemView.findViewById<TextView>(R.id.counterKD)
-
 
 
     }
@@ -50,11 +50,12 @@ class KategorienDetailAdapter(
 
     override fun onBindViewHolder(holder: KategorienDetailAdapter.ItemViewHolder, position: Int) {
 
+        val item = dataset[position]
         fun changeBasket(value: Int) {
-            if (articleCounter == 0 && value < 0) {
+            if (item.quantity == 0 && value < 0) {
                 return
             } else {
-                articleCounter += value
+                item.quantity += value
                 holder.detailCounterKD.text = articleCounter.toString()
             }
         }
@@ -67,14 +68,22 @@ class KategorienDetailAdapter(
         holder.detailCounterKD.text = artikel.quantity.toString()
         holder.addCardKD.setOnClickListener {
             changeBasket(1)
+            clickListener(item,true)
         }
+
         holder.deleteCardKD.setOnClickListener {
             changeBasket(-1)
+            if (item.quantity == 0) {
+                clickListener(item,false)
+                Log.d("Hallo","Bitte")
+            } else {
+                clickListener(item, true)
+                Log.d("Hallo","Why")
+            }
+
         }
 
+
     }
-
-
 }
-
 
