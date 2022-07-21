@@ -1,11 +1,16 @@
 package de.syntaxinstitut.myapplication.ui.kategorienDetail
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import de.syntaxinstitut.myapplication.data.DataSource
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 
-class KategorienDetailViewModel : ViewModel() {
+
+class KategorienDetailViewModel(application: Application) : AndroidViewModel(application){
+
+
+
     fun getData (basket: List<ArtikelData>) : List<ArtikelData>{
         val kategorienDetail = DataSource().loadArtikel()
         val kategorienChanged = mutableListOf<ArtikelData>()
@@ -35,7 +40,10 @@ class KategorienDetailViewModel : ViewModel() {
             }
         }
         return kategorienChanged
+
     }
+
+
     fun filterByKategorie(
         unfilteredList: List<ArtikelData>,
         filter: KategorieDetailEnum
@@ -50,3 +58,4 @@ class KategorienDetailViewModel : ViewModel() {
     }
 
 }
+

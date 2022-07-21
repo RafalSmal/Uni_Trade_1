@@ -6,8 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.databinding.FragmentHomescreenBinding
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HomescreenFragment : Fragment() {
     private lateinit var binding: FragmentHomescreenBinding
@@ -23,6 +28,14 @@ class HomescreenFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        lifecycleScope.launch() {
+//            delay(3000)
+//            findNavController().navigate(HomescreenFragmentDirections.actionHomescreenFragmentToSatteRabatteFragment())
+//        }
+    }
 
 
 }

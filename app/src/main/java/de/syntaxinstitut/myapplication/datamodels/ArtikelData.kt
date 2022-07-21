@@ -1,12 +1,17 @@
 package de.syntaxinstitut.myapplication.datamodels
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
 
-data class ArtikelData(
-    val id: Int,
-    val productText: String,
+
+@Entity(tableName = "artikel_table")
+data class ArtikelData (
+    @PrimaryKey(autoGenerate = true)
+    var id: Long= 0,
+    var productText: String,
     var quantity: Int,
-    val image: Int,
-    val price: Double,
-    val category: KategorieDetailEnum
+    var image: Int,
+    var price: Double,
+    var category: KategorieDetailEnum
 )

@@ -1,6 +1,7 @@
 package de.syntaxinstitut.myapplication.ui.kategorienDetail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,13 +51,21 @@ class KategorienDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val dataSourceArtikel = DataSource().loadArtikel()
+
+        fun debugLoadArtikel(): List<ArtikelData> {
+            var dataSourceLoad = DataSource().loadArtikel()
+            Log.d("Hello","dataSourceLoad")
+           return dataSourceLoad
+
+        }
+        val dataSourceArtikel = debugLoadArtikel()
         //Filtert die Artikel für die KategorienDetail Ansicht
 
         val filterArtikel =
             viewModel.filterByKategorie(unfilteredList = dataSourceArtikel, args.kategorieDetail)
-
         val dataset = viewModel.getData(basketViewModel.getBasket())
+
+
 
         binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(dataset){
             partItem: ArtikelData,add:Boolean-> addOrRemoveFromBasket(partItem,add)
