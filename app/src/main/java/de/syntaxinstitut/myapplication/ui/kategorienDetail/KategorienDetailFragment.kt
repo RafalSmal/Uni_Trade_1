@@ -52,6 +52,7 @@ class KategorienDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+
         fun debugLoadArtikel(): List<ArtikelData> {
             var dataSourceLoad = DataSource().loadArtikel()
             Log.d("Hello","dataSourceLoad")

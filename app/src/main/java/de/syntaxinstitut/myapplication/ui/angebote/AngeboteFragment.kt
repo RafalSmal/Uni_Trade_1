@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.AngeboteAdapter
 import de.syntaxinstitut.myapplication.adapter.KategorienDetailAdapter
@@ -42,6 +44,12 @@ class AngeboteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Der SnapHelper sorgt dafür,
+        // dass die RecyclerView immer auf das aktuelle List Item springt
+        val helper: SnapHelper = PagerSnapHelper()
+        helper.attachToRecyclerView(binding.angeboteNew)
+
         //Log.d("Hallo",basketViewModel.getBasket().toString())
         val dataset = viewModel.getData(basketViewModel.getBasket())
         binding.angeboteNew.adapter =

@@ -2,14 +2,20 @@ package de.syntaxinstitut.myapplication.ui.kategorienDetail
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import de.syntaxinstitut.myapplication.data.ArtikelRepository
 import de.syntaxinstitut.myapplication.data.DataSource
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
+import de.syntaxinstitut.myapplication.data.remote.ArtikelApi
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import kotlinx.coroutines.launch
 
 
 class KategorienDetailViewModel(application: Application) : AndroidViewModel(application){
 
+private val repository = ArtikelRepository(ArtikelApi)
 
+val artikelList = repository.artikelListe
 
     fun getData (basket: List<ArtikelData>) : List<ArtikelData>{
         val kategorienDetail = DataSource().loadArtikel()
@@ -41,6 +47,12 @@ class KategorienDetailViewModel(application: Application) : AndroidViewModel(app
         }
         return kategorienChanged
 
+
+        fun loadData() {
+            viewModelScope.launch {
+                repository.getArtikel()
+            }
+        }
     }
 
 
