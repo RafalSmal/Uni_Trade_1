@@ -10,8 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.WarenkorbAdapter
-import de.syntaxinstitut.myapplication.data.DataSource
-import de.syntaxinstitut.myapplication.databinding.FragmentKategorienBinding
 import de.syntaxinstitut.myapplication.databinding.FragmentWarenkorbBinding
 import de.syntaxinstitut.myapplication.util.BasketViewModel
 

@@ -13,7 +13,6 @@ import androidx.navigation.fragment.navArgs
 import de.syntaxinstitut.myapplication.MainViewModel
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.KategorienDetailAdapter
-import de.syntaxinstitut.myapplication.data.DataSource
 import de.syntaxinstitut.myapplication.databinding.FragmentKategorienDetailBinding
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 import de.syntaxinstitut.myapplication.util.BasketViewModel
@@ -53,24 +52,24 @@ class KategorienDetailFragment : Fragment() {
 
 
 
-        fun debugLoadArtikel(): List<ArtikelData> {
-            var dataSourceLoad = DataSource().loadArtikel()
-            Log.d("Hello","dataSourceLoad")
-           return dataSourceLoad
+       // fun debugLoadArtikel(): List<ArtikelData> {
+           // val dataSourceLoad = DataSource().loadArtikel()
+          //  Log.d("Hello","dataSourceLoad")
+           //return dataSourceLoad
 
-        }
-        val dataSourceArtikel = debugLoadArtikel()
+        //}
+       // val dataSourceArtikel = debugLoadArtikel()
         //Filtert die Artikel für die KategorienDetail Ansicht
 
-        val filterArtikel =
-            viewModel.filterByKategorie(unfilteredList = dataSourceArtikel, args.kategorieDetail)
+      //  val filterArtikel =
+      //      viewModel.filterByKategorie(unfilteredList = dataSourceArtikel, args.kategorieDetail)
         val dataset = viewModel.getData(basketViewModel.getBasket())
 
 
 
-        binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(dataset){
-            partItem: ArtikelData,add:Boolean-> addOrRemoveFromBasket(partItem,add)
-        }
+//        binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(dataset){
+//            partItem: ArtikelData,add:Boolean-> addOrRemoveFromBasket(partItem,add)
+//        }
 
         //  viewModel.articleCounter.observe(viewLifecycleOwner, Observer {
 

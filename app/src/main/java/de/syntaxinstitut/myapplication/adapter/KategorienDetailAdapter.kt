@@ -63,7 +63,7 @@ class KategorienDetailAdapter(
 
         val artikel = dataset[position]
         holder.detailName.text = artikel.productText
-        holder.detailImage.setImageResource(artikel.image)
+       // holder.detailImage.setImageResource(Int)
         holder.detailPrice.text = artikel.price.toString() + " €"
         holder.detailCounterKD.text = artikel.quantity.toString()
         holder.addCardKD.setOnClickListener {

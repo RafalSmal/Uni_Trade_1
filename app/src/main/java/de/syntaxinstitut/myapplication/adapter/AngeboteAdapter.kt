@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 
 class AngeboteAdapter(
     private val context: Context,
     private val dataset: List<ArtikelData>,
-    private val clickListener: (ArtikelData,Boolean) -> Unit
+    private val clickListener: (ArtikelData, Boolean) -> Unit
 
 ) : RecyclerView.Adapter<AngeboteAdapter.ItemViewHolder>() {
 
@@ -42,6 +45,16 @@ class AngeboteAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val saleItem = dataset[position]
 
+        val imageUri = saleItem.image.toUri().buildUpon().scheme("https").build()
+
+        holder.productImageView.load(imageUri) {
+            transformations(RoundedCornersTransformation(10f))
+        }
+
+        holder.productText.text = saleItem.productText
+
+        holder.productPrice.text = saleItem.price.toString()
+
         fun changeBasket(value: Int) {
             if (saleItem.quantity == value && value < 0) {
                 return
@@ -54,18 +67,18 @@ class AngeboteAdapter(
 
         holder.productPrice.text = saleItem.price.toString() + " €"
         holder.productText.text = saleItem.productText.toString()
-        holder.productImageView.setImageResource(saleItem.image)
+        holder.productImageView.load(imageUri)
         holder.detailCounterA.text = saleItem.quantity.toString()
         holder.plusItemA.setOnClickListener {
             changeBasket(1)
-            clickListener(saleItem,true)
+            clickListener(saleItem, true)
         }
         holder.minusItemA.setOnClickListener {
             changeBasket(-1)
-            if (saleItem.quantity == 0 ){
-                clickListener(saleItem,false)
-            }else{
-                clickListener(saleItem,true)
+            if (saleItem.quantity == 0) {
+                clickListener(saleItem, false)
+            } else {
+                clickListener(saleItem, true)
             }
         }
 

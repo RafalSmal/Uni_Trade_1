@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.AngeboteAdapter
-import de.syntaxinstitut.myapplication.adapter.KategorienDetailAdapter
-import de.syntaxinstitut.myapplication.data.DataSource
 import de.syntaxinstitut.myapplication.databinding.FragmentAngeboteNewBinding
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 import de.syntaxinstitut.myapplication.util.BasketViewModel
@@ -52,6 +50,7 @@ class AngeboteFragment : Fragment() {
 
         //Log.d("Hallo",basketViewModel.getBasket().toString())
         val dataset = viewModel.getData(basketViewModel.getBasket())
+
         binding.angeboteNew.adapter =
             AngeboteAdapter(requireContext(), dataset ) { partItem: ArtikelData,add:Boolean ->
                addOrRemoveFromBasket(partItem,add)

@@ -1,22 +1,15 @@
 package de.syntaxinstitut.myapplication
 
 import android.app.Application
-import android.content.ClipData
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.Database
-import de.syntaxinstitut.myapplication.data.DataSource
+import de.syntaxinstitut.myapplication.database.ArtikelRepository
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
-import de.syntaxinstitut.myapplication.local.Repository
-import de.syntaxinstitut.myapplication.local.getDatabase
+import de.syntaxinstitut.myapplication.database.ArtikelDatabase.Companion.getDatabase
 import kotlinx.coroutines.launch
-import java.lang.Exception
-import java.util.*
 
 class MainViewModel(application: Application) : ViewModel() {
 
@@ -42,7 +35,7 @@ class MainViewModel(application: Application) : ViewModel() {
 
     private val dataBase = getDatabase(application)
 
-    private val repository = Repository(dataBase)
+    private val repository = ArtikelRepository(dataBase)
 
     fun insertArtikel(artikelData: ArtikelData) {
         viewModelScope.launch {

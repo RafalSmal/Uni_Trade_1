@@ -1,4 +1,4 @@
-package de.syntaxinstitut.myapplication.local
+package de.syntaxinstitut.myapplication.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
@@ -15,7 +15,7 @@ interface ArtikelDatabaseDao {
     fun getCount(): Int
 
     @Query("SELECT * FROM artikel_table")
-    fun getAll(): LiveData<List<ArtikelData>>
+    fun getAll():List<ArtikelData>
 
     @Query("DELETE FROM artikel_table WHERE id=:id")
     suspend fun deleteById(id:Long)

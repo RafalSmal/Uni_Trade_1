@@ -2,59 +2,54 @@ package de.syntaxinstitut.myapplication.ui.kategorienDetail
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
-import de.syntaxinstitut.myapplication.data.ArtikelRepository
-import de.syntaxinstitut.myapplication.data.DataSource
+import de.syntaxinstitut.myapplication.database.ArtikelRepository
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
-import de.syntaxinstitut.myapplication.data.remote.ArtikelApi
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
-import kotlinx.coroutines.launch
+import de.syntaxinstitut.myapplication.database.ArtikelDatabase
 
 
-class KategorienDetailViewModel(application: Application) : AndroidViewModel(application){
+class KategorienDetailViewModel(application: Application) : AndroidViewModel(application) {
 
-private val repository = ArtikelRepository(ArtikelApi)
+    private val repository = ArtikelRepository(ArtikelDatabase.getDatabase(application))
 
-val artikelList = repository.artikelListe
+   // val artikelList = repository.artikelListe
 
-    fun getData (basket: List<ArtikelData>) : List<ArtikelData>{
-        val kategorienDetail = DataSource().loadArtikel()
+    fun getData(basket: List<ArtikelData>) {
+    //    val kategorienDetail = DataSource().loadArtikel()
         val kategorienChanged = mutableListOf<ArtikelData>()
         var found = false
 
-        for (artikel in kategorienDetail) {
-            for (basketArtikel in basket){
-                if(artikel.productText == basketArtikel.productText){
-                    kategorienChanged.add(
-                        ArtikelData(
-                            artikel.id,
-                            artikel.productText,
-                            basketArtikel.quantity,
-                            artikel.image,
-                            artikel.price,
-                            artikel.category
-                        )
-                    )
-                    found = true
-                    break
-                }
-            }
-            if(!found){
-                kategorienChanged.add(artikel)
-            }else{
-                found=false
-            }
-        }
-        return kategorienChanged
-
-
-        fun loadData() {
-            viewModelScope.launch {
-                repository.getArtikel()
-            }
-        }
+     //   for (artikel in kategorienDetail) {
+//            for (basketArtikel in basket) {
+//                if (artikel.productText == basketArtikel.productText) {
+//                    kategorienChanged.add(
+//                        ArtikelData(
+//                            artikel.id,
+//                            artikel.productText,
+//                            artikel.image,
+//                            artikel.price,
+//                            artikel.category,
+//                            basketArtikel.quantity,
+//                        )
+//                    )
+//                    found = true
+//                    break
+//                }
+//            }
+//            if (!found) {
+//                kategorienChanged.add(artikel)
+//            } else {
+//                found = false
+//            }
+//        }
+//        return kategorienChanged
+//
+//
     }
 
+    fun getData() {
+            repository.getArtikel()
+    }
 
     fun filterByKategorie(
         unfilteredList: List<ArtikelData>,

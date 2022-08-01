@@ -6,12 +6,13 @@ import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
 
 
 @Entity(tableName = "artikel_table")
-data class ArtikelData (
+data class ArtikelData(
     @PrimaryKey(autoGenerate = true)
     var id: Long= 0,
     var productText: String,
-    var quantity: Int,
-    var image: Int,
-    var price: Double,
-    var category: KategorieDetailEnum
-)
+    var image: String,
+    var price: Double?,
+    var category: KategorieDetailEnum,
+    var quantity: Int = 0,
+
+    )

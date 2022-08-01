@@ -1,41 +1,59 @@
 package de.syntaxinstitut.myapplication.ui.angebote
 
-import android.provider.ContactsContract
-import android.util.Log
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
-import de.syntaxinstitut.myapplication.data.DataSource
+import androidx.lifecycle.viewModelScope
+import de.syntaxinstitut.myapplication.api.ApiRepository
+import de.syntaxinstitut.myapplication.database.ArtikelRepository
+import de.syntaxinstitut.myapplication.data.remote.ArtikelApi
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import kotlinx.coroutines.launch
 
-class AngeboteViewModel : ViewModel() {
+class AngeboteViewModel(application : Application) : AndroidViewModel(application) {
+
+    private val apiRepository = ApiRepository(ArtikelApi)
+    val angeboteChanged = mutableListOf<ArtikelData>()
+    var dataBaseRepository = ArtikelRepository.getInstance(application)
+
     fun getData(basket: List<ArtikelData>): List<ArtikelData> {
-        val angebote = DataSource().loadArtikel()
-        val angeboteChanged = mutableListOf<ArtikelData>()
-        var found = false
+        viewModelScope.launch {
+            val angebote = apiRepository.getFromApi()
 
-        for (artikel in angebote) {
-            for (basketArtikel in basket) {
-                if (artikel.productText == basketArtikel.productText) {
-                    angeboteChanged.add(
-                        ArtikelData(
-                            artikel.id,
-                            artikel.productText,
-                            basketArtikel.quantity,
-                            artikel.image,
-                            artikel.price,
-                            artikel.category
-                        )
-                    )
-                    found = true
-                    break
+            var found = false
+
+            if (angebote != null) {
+                for (artikel in angebote) {
+                    for (basketArtikel in basket) {
+                        if (artikel.productText == basketArtikel.productText) {
+                            angeboteChanged.add(
+                                ArtikelData(
+                                    artikel.id,
+                                    artikel.productText,
+                                    artikel.image,
+                                    artikel.price,
+                                    artikel.category,
+                                    basketArtikel.quantity,
+                                )
+                            )
+                            found = true
+                            break
+                        }
+                    }
+                    if (!found) {
+                        angeboteChanged.add(artikel)
+                    } else {
+                        found = false
+                    }
+                    dataBaseRepository.insert(artikel)
                 }
+
             }
-            if (!found){
-                angeboteChanged.add(artikel)
-            }else{
-                found=false
-            }
+
         }
         return angeboteChanged
     }
+
+
 
 }
