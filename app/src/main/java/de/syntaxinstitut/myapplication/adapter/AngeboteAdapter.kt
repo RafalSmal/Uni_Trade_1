@@ -17,7 +17,7 @@ import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 class AngeboteAdapter(
     private val context: Context,
     private val dataset: List<ArtikelData>,
-    private val clickListener: (ArtikelData, Boolean) -> Unit
+    private val clickListener: (ArtikelData,Boolean) -> Unit
 
 ) : RecyclerView.Adapter<AngeboteAdapter.ItemViewHolder>() {
 
@@ -71,7 +71,7 @@ class AngeboteAdapter(
         holder.detailCounterA.text = saleItem.quantity.toString()
         holder.plusItemA.setOnClickListener {
             changeBasket(1)
-            clickListener(saleItem, true)
+           // clickListener(saleItem, true)
         }
         holder.minusItemA.setOnClickListener {
             changeBasket(-1)
@@ -85,6 +85,8 @@ class AngeboteAdapter(
     }
 
 }
+
+
 
 
 

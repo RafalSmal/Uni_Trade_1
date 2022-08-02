@@ -9,12 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import de.syntaxinstitut.myapplication.MainViewModel
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.KategorienDetailAdapter
 import de.syntaxinstitut.myapplication.databinding.FragmentKategorienDetailBinding
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.datamodels.KategorienData
 import de.syntaxinstitut.myapplication.util.BasketViewModel
 
 class KategorienDetailFragment : Fragment() {
@@ -50,6 +52,17 @@ class KategorienDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.getData(args.kategorieDetail)
+
+        viewModel.angeboteFiltered.observe(
+            viewLifecycleOwner,
+            Observer {
+                binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(it){
+                    partItem: ArtikelData,add: Boolean ->
+                    addOrRemoveFromBasket(partItem,add)
+                }
+            }
+        )
 
 
        // fun debugLoadArtikel(): List<ArtikelData> {
@@ -63,7 +76,7 @@ class KategorienDetailFragment : Fragment() {
 
       //  val filterArtikel =
       //      viewModel.filterByKategorie(unfilteredList = dataSourceArtikel, args.kategorieDetail)
-        val dataset = viewModel.getData(basketViewModel.getBasket())
+       // val dataset = viewModel.getData(basketViewModel.getBasket())
 
 
 

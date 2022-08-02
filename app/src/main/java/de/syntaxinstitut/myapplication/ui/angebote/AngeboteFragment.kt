@@ -1,7 +1,6 @@
 package de.syntaxinstitut.myapplication.ui.angebote
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,15 +48,29 @@ class AngeboteFragment : Fragment() {
         helper.attachToRecyclerView(binding.angeboteNew)
 
         //Log.d("Hallo",basketViewModel.getBasket().toString())
-        val dataset = viewModel.getData(basketViewModel.getBasket())
+       // val dataset = viewModel.getData(basketViewModel.getBasket())
 
-        binding.angeboteNew.adapter =
-            AngeboteAdapter(requireContext(), dataset ) { partItem: ArtikelData,add:Boolean ->
-               addOrRemoveFromBasket(partItem,add)
+        viewModel.getData(basketViewModel.getBasket())
+
+        viewModel.angeboteChanged.observe(
+            viewLifecycleOwner,
+            androidx.lifecycle.Observer {
+                binding.angeboteNew.adapter =
+                    AngeboteAdapter(requireContext(),it){ partItem : ArtikelData, add: Boolean ->
+                        addOrRemoveFromBasket(partItem, add)
+                    }
             }
-
-
+        )
     }
+
+
+//        binding.angeboteNew.adapter =
+//            AngeboteAdapter(requireContext(), dataset ) { partItem: ArtikelData,add:Boolean ->
+//               addOrRemoveFromBasket(partItem,add)
+//            }
+//
+//
+//    }
     fun addOrRemoveFromBasket(artikelData: ArtikelData,add:Boolean){
         if (add){
             basketViewModel.addBasket(artikelData)

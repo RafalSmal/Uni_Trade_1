@@ -10,9 +10,12 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 import de.syntaxinstitut.myapplication.datamodels.KategorienData
@@ -50,6 +53,7 @@ class KategorienDetailAdapter(
 
     override fun onBindViewHolder(holder: KategorienDetailAdapter.ItemViewHolder, position: Int) {
 
+
         val item = dataset[position]
         fun changeBasket(value: Int) {
             if (item.quantity == 0 && value < 0) {
@@ -63,13 +67,19 @@ class KategorienDetailAdapter(
 
         val artikel = dataset[position]
         holder.detailName.text = artikel.productText
-       // holder.detailImage.setImageResource(Int)
         holder.detailPrice.text = artikel.price.toString() + " €"
         holder.detailCounterKD.text = artikel.quantity.toString()
         holder.addCardKD.setOnClickListener {
             changeBasket(1)
             clickListener(item,true)
         }
+
+        val imageUri = artikel.image.toUri().buildUpon().scheme("https").build()
+
+        holder.detailImage.load(imageUri) {
+            transformations(RoundedCornersTransformation(10f))
+        }
+
 
         holder.deleteCardKD.setOnClickListener {
             changeBasket(-1)
