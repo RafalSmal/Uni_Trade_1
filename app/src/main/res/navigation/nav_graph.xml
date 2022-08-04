@@ -9,14 +9,6 @@
         android:name="de.syntaxinstitut.myapplication.ui.angebote.AngeboteFragment"
         android:label="AngeboteFragment" />
     <fragment
-        android:id="@+id/kategorienFragment"
-        android:name="de.syntaxinstitut.myapplication.ui.kategorien.KategorienFragment"
-        android:label="KategorienFragment" >
-        <action
-            android:id="@+id/action_kategorienFragment_to_kategorienDetailFragment"
-            app:destination="@id/kategorienDetailFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/warenkorbFragment"
         android:name="de.syntaxinstitut.myapplication.ui.warenkorb.WarenkorbFragment"
         android:label="WarenkorbFragment" />
@@ -29,14 +21,6 @@
         android:name="de.syntaxinstitut.myapplication.ui.mehr.MehrFragment"
         android:label="MehrFragment" />
     <fragment
-        android:id="@+id/kategorienDetailFragment"
-        android:name="de.syntaxinstitut.myapplication.ui.kategorienDetail.KategorienDetailFragment"
-        android:label="kategorienDetailFragment">
-        <argument
-            android:name="kategorieDetail"
-            app:argType="de.syntaxinstitut.myapplication.data.KategorieDetailEnum" />
-    </fragment>
-    <fragment
         android:id="@+id/homescreenFragment"
         android:name="de.syntaxinstitut.myapplication.ui.homescreen.HomescreenFragment"
         android:label="HomescreenFragment" >
@@ -44,5 +28,24 @@
             android:id="@+id/action_homescreenFragment_to_satteRabatteFragment"
             app:destination="@id/satteRabatteFragment" />
     </fragment>
+    <navigation android:id="@+id/kategorienNavGraph"
+        app:startDestination="@id/kategorienFragment">
+        <fragment
+            android:id="@+id/kategorienFragment"
+            android:name="de.syntaxinstitut.myapplication.ui.kategorien.KategorienFragment"
+            android:label="KategorienFragment">
+            <action
+                android:id="@+id/action_kategorienFragment_to_kategorienDetailFragment"
+                app:destination="@id/kategorienDetailFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/kategorienDetailFragment"
+            android:name="de.syntaxinstitut.myapplication.ui.kategorienDetail.KategorienDetailFragment"
+            android:label="kategorienDetailFragment">
+            <argument
+                android:name="kategorieDetail"
+                app:argType="de.syntaxinstitut.myapplication.data.KategorieDetailEnum" />
+        </fragment>
+    </navigation>
 
 </navigation>

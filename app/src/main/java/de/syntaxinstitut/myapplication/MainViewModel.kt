@@ -1,17 +1,14 @@
 package de.syntaxinstitut.myapplication
 
 import android.app.Application
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import de.syntaxinstitut.myapplication.database.ArtikelRepository
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 import de.syntaxinstitut.myapplication.database.ArtikelDatabase.Companion.getDatabase
 import kotlinx.coroutines.launch
 
-class MainViewModel(application: Application) : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
     fun filterByKategorie(
@@ -32,6 +29,20 @@ class MainViewModel(application: Application) : ViewModel() {
     private val _loading = MutableLiveData<ApiStatus>()
     val loading: LiveData<ApiStatus>
         get() = _loading
+
+
+    private val _loadingScreen = MutableLiveData<Boolean>()
+    val loadingScreen: LiveData<Boolean>
+        get() = _loadingScreen
+
+    fun showLoadingScreen (){
+    _loadingScreen.value = true
+    }
+
+    fun hideLoadingScreen() {
+        _loadingScreen.value = false
+    }
+
 
     private val dataBase = getDatabase(application)
 

@@ -23,10 +23,9 @@ import de.syntaxinstitut.myapplication.datamodels.KategorienData
 class KategorienDetailAdapter(
 
     private val dataset: List<ArtikelData>,
+    private val basket : List<ArtikelData>,
     private val clickListener: (ArtikelData, Boolean) -> Unit
 ) : RecyclerView.Adapter<KategorienDetailAdapter.ItemViewHolder>() {
-
-    private var articleCounter = 0
 
 
     //Klassen Variablen
@@ -55,22 +54,32 @@ class KategorienDetailAdapter(
 
 
         val item = dataset[position]
+
         fun changeBasket(value: Int) {
-            if (item.quantity == 0 && value < 0) {
-                return
+            if (item.quantity == 0 && value <= 0) {
+                clickListener(item,false)
             } else {
-                item.quantity += value
-                holder.detailCounterKD.text = articleCounter.toString()
+                item.quantity = value
+                holder.detailCounterKD.text = item.quantity.toString()
+                clickListener(item,true)
             }
         }
 
 
         val artikel = dataset[position]
         holder.detailName.text = artikel.productText
+
         holder.detailPrice.text = artikel.price.toString() + " €"
-        holder.detailCounterKD.text = artikel.quantity.toString()
+
+        for (i in basket){
+            if (i.productText == item.productText ){
+                item.quantity = i.quantity
+            }
+        }
+
+        changeBasket(artikel.quantity)
         holder.addCardKD.setOnClickListener {
-            changeBasket(1)
+            changeBasket(item.quantity + 1)
             clickListener(item,true)
         }
 
@@ -85,10 +94,8 @@ class KategorienDetailAdapter(
             changeBasket(-1)
             if (item.quantity == 0) {
                 clickListener(item,false)
-                Log.d("Hallo","Bitte")
             } else {
                 clickListener(item, true)
-                Log.d("Hallo","Why")
             }
 
         }

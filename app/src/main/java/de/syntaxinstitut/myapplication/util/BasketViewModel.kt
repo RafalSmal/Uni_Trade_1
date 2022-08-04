@@ -23,12 +23,21 @@ class BasketViewModel : ViewModel(){
 
         basket.add(artikelData)
 
+        //TODO  Wird in die Datenbank eingefügt
+
+
+
+
     }
 
     fun removeBasket(artikelData: ArtikelData) {
         for (artikel in basket ){
             if (artikel.productText== artikelData.productText){
                 basket.remove(artikel)
+
+                //TODO Datenbank einfügen
+
+
                 return
             }
         }

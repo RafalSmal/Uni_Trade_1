@@ -19,7 +19,9 @@ class AngeboteViewModel(application: Application) : AndroidViewModel(application
 
     fun getData(basket: List<ArtikelData>) {
         viewModelScope.launch {
-            _angeboteChanged.value = apiRepository.getFromApi()
+            _angeboteChanged.value = apiRepository.getFromApi()!!.filter {
+                it.price != null
+            }
 
 //            var found = false
 //

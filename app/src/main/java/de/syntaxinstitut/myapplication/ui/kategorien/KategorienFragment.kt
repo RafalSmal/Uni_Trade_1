@@ -58,6 +58,7 @@ class KategorienFragment : Fragment() {
 
     }
 
+    // weiß woher welche Kategorie angesteuert wird
     fun partItemClicked(partItem: KategorienData) {
         findNavController().navigate(
             KategorienFragmentDirections.actionKategorienFragmentToKategorienDetailFragment(

@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/warenkorbPic"
                 android:layout_width="149dp"
                 android:layout_height="96dp"
                 android:layout_marginStart="5dp"
@@ -34,7 +34,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:text="Artikel :"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/warenkorbPic"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -44,7 +44,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:text="Anzahl :"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/warenkorbPic"
                 app:layout_constraintTop_toBottomOf="@+id/list_warenkorb_Artikel" />
 
             <TextView
@@ -54,7 +54,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:text="Preis :"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/warenkorbPic"
                 app:layout_constraintTop_toBottomOf="@+id/list_warenkorb_Anzahl" />
 
             <TextView

@@ -32,6 +32,7 @@
             android:layout_marginEnd="179dp"
             android:text="Warenkorb"
             android:textSize="34sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.414"
             app:layout_constraintStart_toStartOf="parent"

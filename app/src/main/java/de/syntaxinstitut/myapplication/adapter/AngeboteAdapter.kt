@@ -17,7 +17,7 @@ import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 class AngeboteAdapter(
     private val context: Context,
     private val dataset: List<ArtikelData>,
-    private val clickListener: (ArtikelData,Boolean) -> Unit
+    private val clickListener: (ArtikelData, Boolean) -> Unit
 
 ) : RecyclerView.Adapter<AngeboteAdapter.ItemViewHolder>() {
 
@@ -56,7 +56,7 @@ class AngeboteAdapter(
         holder.productPrice.text = saleItem.price.toString()
 
         fun changeBasket(value: Int) {
-            if (saleItem.quantity == value && value < 0) {
+            if (saleItem.quantity == 0 && value < 0) {
                 return
             } else {
                 saleItem.quantity += value
@@ -65,13 +65,15 @@ class AngeboteAdapter(
         }
 
 
+
         holder.productPrice.text = saleItem.price.toString() + " €"
         holder.productText.text = saleItem.productText.toString()
         holder.productImageView.load(imageUri)
+
         holder.detailCounterA.text = saleItem.quantity.toString()
         holder.plusItemA.setOnClickListener {
             changeBasket(1)
-           // clickListener(saleItem, true)
+            clickListener(saleItem, true)
         }
         holder.minusItemA.setOnClickListener {
             changeBasket(-1)

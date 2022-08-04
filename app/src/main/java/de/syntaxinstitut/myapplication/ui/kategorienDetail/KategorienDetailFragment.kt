@@ -57,8 +57,8 @@ class KategorienDetailFragment : Fragment() {
         viewModel.angeboteFiltered.observe(
             viewLifecycleOwner,
             Observer {
-                binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(it){
-                    partItem: ArtikelData,add: Boolean ->
+                binding.kategorienDetailRecycler.adapter =
+                    KategorienDetailAdapter(it,basketViewModel.getBasket()){ partItem: ArtikelData,add: Boolean ->
                     addOrRemoveFromBasket(partItem,add)
                 }
             }

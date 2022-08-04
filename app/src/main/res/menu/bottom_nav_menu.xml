@@ -7,7 +7,7 @@
         android:title="Angebote"/>
 
     <item
-        android:id="@+id/kategorienFragment"
+        android:id="@+id/kategorienNavGraph"
         android:icon="@drawable/nav_kategorie"
         android:title="Kategorien" />
 
