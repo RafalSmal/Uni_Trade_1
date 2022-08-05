@@ -41,6 +41,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/artikelName_detail"
                 app:layout_constraintHorizontal_bias="0.461"
                 app:layout_constraintStart_toStartOf="@+id/artikelName_detail"
+                app:layout_constraintTop_toBottomOf="@+id/counterKD"
+                app:layout_constraintVertical_bias="1.0"
                 tools:text="10,00€" />
 
             <TextView
@@ -70,15 +72,14 @@
 
             <TextView
                 android:id="@+id/counterKD"
-                android:layout_width="11dp"
-                android:layout_height="15dp"
-                android:layout_marginBottom="16dp"
+                android:layout_width="27dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="16dp"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/artikelPreis_detail"
                 app:layout_constraintEnd_toStartOf="@+id/addCardKD"
+                app:layout_constraintHorizontal_bias="0.471"
                 app:layout_constraintStart_toEndOf="@+id/outCardKD"
                 app:layout_constraintTop_toBottomOf="@+id/artikelName_detail"
-                app:layout_constraintVertical_bias="1.0"
                 tools:text="10" />
 
             <ImageButton

@@ -1,6 +1,7 @@
 package de.syntaxinstitut.myapplication.ui.angebote
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import de.syntaxinstitut.myapplication.api.ApiRepository
 import de.syntaxinstitut.myapplication.database.ArtikelRepository
@@ -19,9 +20,23 @@ class AngeboteViewModel(application: Application) : AndroidViewModel(application
 
     fun getData(basket: List<ArtikelData>) {
         viewModelScope.launch {
-            _angeboteChanged.value = apiRepository.getFromApi()!!.filter {
+            var allArtikel = apiRepository.getFromApi()!!.filter {
                 it.price != null
             }
+            var filteredArtikel = mutableListOf<ArtikelData>()
+            for (i in allArtikel) {
+                Log.d("Filter",i.toString())
+                if(filteredArtikel.filter {it.category == i.category}.isEmpty()){
+                    filteredArtikel.add(i)
+                }
+                Log.d("Filter",filteredArtikel.toString())
+            }
+            _angeboteChanged.value = filteredArtikel
+
+
+//            _angeboteChanged.value = apiRepository.getFromApi()!!.filter {
+//                it.price != null
+//            }
 
 //            var found = false
 //
