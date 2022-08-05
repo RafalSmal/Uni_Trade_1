@@ -3,8 +3,9 @@ package de.syntaxinstitut.myapplication.database
 import android.content.Context
 import androidx.room.*
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.datamodels.OrdersData
 
-@Database(entities = [ArtikelData::class], version = 1)
+@Database(entities = [ArtikelData::class,OrdersData::class], version = 1)
 abstract class ArtikelDatabase : RoomDatabase() {
 
     abstract val artikelPoolDao: ArtikelDatabaseDao

@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import de.syntaxinstitut.myapplication.R
@@ -21,12 +22,15 @@ import java.util.*
 class AngeboteFragment : Fragment() {
 
     private lateinit var binding: FragmentAngeboteNewBinding
-    private val basketViewModel: BasketViewModel by activityViewModels()
+   // private val basketViewModel: BasketViewModel by activityViewModels()
+    private lateinit var basketViewModel : BasketViewModel
     private val viewModel: AngeboteViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        basketViewModel = ViewModelProvider(requireActivity()) [BasketViewModel::class.java]
+
     }
 
     override fun onCreateView(
@@ -50,7 +54,7 @@ class AngeboteFragment : Fragment() {
         //Log.d("Hallo",basketViewModel.getBasket().toString())
        // val dataset = viewModel.getData(basketViewModel.getBasket())
 
-        viewModel.getData(basketViewModel.getBasket())
+        viewModel.getData(basketViewModel.basket.value!!.toList())
 
         viewModel.angeboteChanged.observe(
             viewLifecycleOwner,

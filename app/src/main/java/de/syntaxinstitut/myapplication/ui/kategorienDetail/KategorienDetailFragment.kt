@@ -58,26 +58,28 @@ class KategorienDetailFragment : Fragment() {
             viewLifecycleOwner,
             Observer {
                 binding.kategorienDetailRecycler.adapter =
-                    KategorienDetailAdapter(it,basketViewModel.getBasket()){ partItem: ArtikelData,add: Boolean ->
-                    addOrRemoveFromBasket(partItem,add)
-                }
+                    basketViewModel.basket.value?.let { it1 ->
+
+                        KategorienDetailAdapter(it, it1) { partItem: ArtikelData, add: Boolean ->
+                            addOrRemoveFromBasket(partItem, add)
+                        }
+                    }
             }
         )
 
 
-       // fun debugLoadArtikel(): List<ArtikelData> {
-           // val dataSourceLoad = DataSource().loadArtikel()
-          //  Log.d("Hello","dataSourceLoad")
-           //return dataSourceLoad
+        // fun debugLoadArtikel(): List<ArtikelData> {
+        // val dataSourceLoad = DataSource().loadArtikel()
+        //  Log.d("Hello","dataSourceLoad")
+        //return dataSourceLoad
 
         //}
-       // val dataSourceArtikel = debugLoadArtikel()
+        // val dataSourceArtikel = debugLoadArtikel()
         //Filtert die Artikel für die KategorienDetail Ansicht
 
-      //  val filterArtikel =
-      //      viewModel.filterByKategorie(unfilteredList = dataSourceArtikel, args.kategorieDetail)
-       // val dataset = viewModel.getData(basketViewModel.getBasket())
-
+        //  val filterArtikel =
+        //      viewModel.filterByKategorie(unfilteredList = dataSourceArtikel, args.kategorieDetail)
+        // val dataset = viewModel.getData(basketViewModel.getBasket())
 
 
 //        binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(dataset){

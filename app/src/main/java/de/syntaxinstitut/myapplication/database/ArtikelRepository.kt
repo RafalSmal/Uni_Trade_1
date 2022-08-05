@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.datamodels.OrdersData
 import java.lang.Exception
 
 
@@ -31,6 +32,19 @@ class ArtikelRepository(
         return database.artikelPoolDao.getAll()
 
     }
+
+    fun getAllFromOrdersdata(): List<OrdersData>{
+        return  database.artikelPoolDao.getAllFromOrdersdata()
+    }
+
+    suspend fun insert(itemData:OrdersData){
+        database.artikelPoolDao.insertItem(itemData)
+    }
+
+    fun getCountFromOrdersdata () : Int{
+        return database.artikelPoolDao.getCountFromOrdersdata()
+    }
+
 
 //    suspend fun getArtikel() {
 //        Log.e(TAG, "ladet Artikel")

@@ -3,6 +3,7 @@ package de.syntaxinstitut.myapplication.database
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.datamodels.OrdersData
 
 @Dao
 interface ArtikelDatabaseDao {
@@ -22,4 +23,14 @@ interface ArtikelDatabaseDao {
 
     @Update
     suspend fun update(artikelData: ArtikelData)
+
+    @Query("SELECT * FROM ordersdata")
+    fun getAllFromOrdersdata() : List<OrdersData>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertItem(itemData: OrdersData)
+
+    @Query("SELECT COUNT (*) FROM ordersdata")
+    fun getCountFromOrdersdata () : Int
+
 }

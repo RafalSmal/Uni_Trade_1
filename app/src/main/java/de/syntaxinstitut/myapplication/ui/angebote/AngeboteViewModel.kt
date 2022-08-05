@@ -31,6 +31,15 @@ class AngeboteViewModel(application: Application) : AndroidViewModel(application
                 }
                 Log.d("Filter",filteredArtikel.toString())
             }
+
+            for (artikel in basket){
+                for (fartikel in filteredArtikel){
+                    if (artikel.productText == fartikel.productText){
+                        fartikel.quantity = artikel.quantity
+                    }
+                }
+            }
+
             _angeboteChanged.value = filteredArtikel
 
 
