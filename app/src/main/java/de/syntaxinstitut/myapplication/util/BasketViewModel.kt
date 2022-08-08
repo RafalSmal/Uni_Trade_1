@@ -57,8 +57,8 @@ class BasketViewModel(application: Application): AndroidViewModel(application) {
         val order = OrdersData(
             auftragsNr = (repository.getCountFromOrdersdata() + 1 ).toString(),
             bestellDatum = LocalDate.now().toString(),
-            auftragNetto = gesamtBrutto / 1.19,
-            auftragBrutto = gesamtBrutto,
+            auftragNetto = (gesamtBrutto / 1.19).toFloat(),
+            auftragBrutto = gesamtBrutto.toFloat(),
             lieferStrasse = "Max Musterweg 3",
             lieferOrt = "24356 Musterstadt"
 

@@ -31,13 +31,17 @@ class AuftragAdapter (
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
+        val users = listOf("McDonalds","Subway","Döner Kebab Berlin","Pizza Italiana","BurgerKing","Dean & David","Mr. Clou","Ali Baba & die 40 Döner","BurgerMe")
+        val streets = listOf("Am Gasthof 13","Krumme Straße 30","Schimmelweg 3","Parkstraße 23","Musterstraße 11","Berliner Platz 44","Vogelweg 13","Himmelweg 41","Maschsee Straße 9")
+        val places = listOf("27578 Bremerhaven","93055 Regensburg","80339 München","45127 Essen","47608 Geldern","28195 Bremen","27798 Hude","27472 Cuxhaven","53111 Bonn")
 
-        holder.auftragSendInput.text = item.auftragsNr
+
+        holder.auftragSendInput.text = item.auftragsNr + "-" + users.random()
         holder.datumInput.text = item.bestellDatum
-        holder.nettoBetrag.text = item.auftragNetto.toString()
-        holder.bruttoBetrag.text = item.auftragBrutto.toString()
-        holder.adresseStrasse.text = item.lieferStrasse
-        holder.adresseStadt.text = item.lieferOrt
+        holder.nettoBetrag.text = String.format("%.2f",item.auftragNetto)
+        holder.bruttoBetrag.text = String.format("%.2f",item.auftragBrutto)
+        holder.adresseStrasse.text = streets.random()
+        holder.adresseStadt.text = places.random()
 
     }
 

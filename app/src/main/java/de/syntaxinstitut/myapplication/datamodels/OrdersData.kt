@@ -9,8 +9,8 @@ data class OrdersData(
     val id : Int = 0,
     val auftragsNr : String,
     val bestellDatum : String,
-    val auftragNetto : Double,
-    val auftragBrutto : Double,
+    val auftragNetto : Float,
+    val auftragBrutto : Float,
     val lieferStrasse : String,
     val lieferOrt : String
 )
