@@ -91,7 +91,7 @@ class KategorienDetailAdapter(
 
 
         holder.deleteCardKD.setOnClickListener {
-            changeBasket(-1)
+            changeBasket(item.quantity -1)
             if (item.quantity == 0) {
                 clickListener(item,false)
             } else {

@@ -30,6 +30,7 @@
             android:layout_marginStart="163dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="179dp"
+            android:fontFamily="@font/alfa_slab_one"
             android:text="Warenkorb"
             android:textSize="34sp"
             android:textStyle="bold"
@@ -41,11 +42,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/warenkorbRecycler"
             android:layout_width="0dp"
-            android:layout_height="420dp"
+            android:layout_height="480dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Warenkorb_uberschrift" />
+            app:layout_constraintTop_toBottomOf="@+id/Warenkorb_uberschrift"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/buyBtnWk"
@@ -55,6 +58,7 @@
             android:backgroundTint="#FFEB3B"
             android:text="Kaufen"
             android:textColor="#000000"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
