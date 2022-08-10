@@ -1,10 +1,12 @@
 package de.syntaxinstitut.myapplication.datamodels
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
 @Entity(tableName = "artikel_table")
 data class ArtikelData(
     @PrimaryKey(autoGenerate = true)
@@ -15,4 +17,4 @@ data class ArtikelData(
     var category: KategorieDetailEnum,
     var quantity: Int = 0,
 
-    )
+    ) : Parcelable

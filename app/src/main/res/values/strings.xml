@@ -2,4 +2,11 @@
     <string name="app_name">Uni_Trade</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="more">more</string>
+    <string name="firma">firma</string>
+    <string name="street">Street</string>
+    <string name="telefon">Telefon</string>
+    <string name="mail">Mail</string>
+    <string name="adresse">Adresse</string>
+    <string name="stadt">Stadt</string>
 </resources>

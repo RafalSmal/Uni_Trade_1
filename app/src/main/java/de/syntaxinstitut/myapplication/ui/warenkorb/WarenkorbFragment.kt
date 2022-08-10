@@ -1,5 +1,6 @@
 package de.syntaxinstitut.myapplication.ui.warenkorb
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,12 +19,12 @@ import de.syntaxinstitut.myapplication.util.BasketViewModel
 
 class WarenkorbFragment : Fragment() {
     private lateinit var binding: FragmentWarenkorbBinding
-    private lateinit var basketViewModel : BasketViewModel
+    private lateinit var basketViewModel: BasketViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        basketViewModel = ViewModelProvider(requireActivity()) [BasketViewModel::class.java]
+        basketViewModel = ViewModelProvider(requireActivity())[BasketViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -37,32 +38,43 @@ class WarenkorbFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.warenkorbRecycler.adapter = WarenkorbAdapter(requireContext()){partItem : ArtikelData, add: Boolean ->
-            addOrRemoveFromBasket(partItem,add)
-        }
+        binding.warenkorbRecycler.adapter =
+            WarenkorbAdapter(requireContext()) { partItem: ArtikelData, add: Boolean ->
+                addOrRemoveFromBasket(partItem, add)
+            }
         binding.warenkorbRecycler.layoutManager = LinearLayoutManager(requireContext())
 
-        basketViewModel.basket.observe(viewLifecycleOwner){
+        basketViewModel.basket.observe(viewLifecycleOwner) {
             (binding.warenkorbRecycler.adapter as WarenkorbAdapter).update(it)
         }
         gesamtPreisWk()
 
-        binding.buyBtnWk.setOnClickListener{
-            basketViewModel.warenkorbEnde()
+        binding.buyBtnWk.setOnClickListener {
+
+            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+
+
+            val firma = sharedPref?.getString(getString(R.string.firma), "")!!
+            val lieferStrasse = sharedPref.getString(getString(R.string.street), "")!!
+            val lieferOrt = sharedPref.getString(getString(R.string.adresse), "")!!
+
+
+
+            basketViewModel.warenkorbEnde(firma,lieferStrasse,lieferOrt)
             basketViewModel.basket.value!!.clear()
             (binding.warenkorbRecycler.adapter as WarenkorbAdapter).update(basketViewModel.basket.value!!)
-            Toast.makeText(requireContext(),"Vielen Dank für Ihren Einkauf!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Vielen Dank für Ihren Einkauf!", Toast.LENGTH_SHORT)
+                .show()
 
             gesamtPreisWk()
         }
     }
 
 
-
-    fun addOrRemoveFromBasket(artikelData: ArtikelData, add:Boolean){
-        if (add){
+    fun addOrRemoveFromBasket(artikelData: ArtikelData, add: Boolean) {
+        if (add) {
             basketViewModel.addBasket(artikelData)
-        }else{
+        } else {
             basketViewModel.removeBasket(artikelData)
         }
 
@@ -71,10 +83,10 @@ class WarenkorbFragment : Fragment() {
         gesamtPreisWk()
     }
 
-    fun gesamtPreisWk (){
+    fun gesamtPreisWk() {
         var gesamtPreis = 0.0
 
-        for (item in basketViewModel.basket.value!!){
+        for (item in basketViewModel.basket.value!!) {
             gesamtPreis += (item.quantity * item.price!!)
         }
         binding.totalPriceWk.text = "%.2f €".format(gesamtPreis)

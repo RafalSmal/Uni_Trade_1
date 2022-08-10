@@ -1,5 +1,6 @@
 package de.syntaxinstitut.myapplication.ui.auftrag
 
+import android.content.Context
 import android.os.Bundle
 import android.view.InflateException
 import android.view.LayoutInflater
@@ -38,9 +39,11 @@ class AuftragFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auftragViewModel.getAllOrders()
+        val allOrder = auftragViewModel.getAllOrders()
+
+
         binding.auftragRecycler.adapter =
-            AuftragAdapter(auftragViewModel.getAllOrders())
+            AuftragAdapter(auftragViewModel.getAllOrders(),requireContext())
 
         binding.auftragRecycler.layoutManager = LinearLayoutManager(requireContext())
     }

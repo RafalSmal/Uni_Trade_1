@@ -7,10 +7,12 @@ import androidx.room.PrimaryKey
 data class OrdersData(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
-    val auftragsNr : String,
+    var auftragsNr : Int,
+    var firma : String,
     val bestellDatum : String,
     val auftragNetto : Float,
     val auftragBrutto : Float,
-    val lieferStrasse : String,
-    val lieferOrt : String
+    var lieferStrasse : String,
+    var lieferOrt : String,
+    var articles : List<ArtikelData>
 )

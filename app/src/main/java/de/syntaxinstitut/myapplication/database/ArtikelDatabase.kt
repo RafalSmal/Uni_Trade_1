@@ -6,6 +6,7 @@ import de.syntaxinstitut.myapplication.datamodels.ArtikelData
 import de.syntaxinstitut.myapplication.datamodels.OrdersData
 
 @Database(entities = [ArtikelData::class,OrdersData::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class ArtikelDatabase : RoomDatabase() {
 
     abstract val artikelPoolDao: ArtikelDatabaseDao
