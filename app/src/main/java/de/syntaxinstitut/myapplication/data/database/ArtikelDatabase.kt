@@ -1,9 +1,9 @@
-package de.syntaxinstitut.myapplication.database
+package de.syntaxinstitut.myapplication.data.database
 
 import android.content.Context
 import androidx.room.*
-import de.syntaxinstitut.myapplication.datamodels.ArtikelData
-import de.syntaxinstitut.myapplication.datamodels.OrdersData
+import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.data.datamodels.OrdersData
 
 @Database(entities = [ArtikelData::class,OrdersData::class], version = 1)
 @TypeConverters(Converters::class)

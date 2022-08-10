@@ -12,7 +12,7 @@ import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.KategorienAdapter
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
 import de.syntaxinstitut.myapplication.databinding.FragmentKategorienBinding
-import de.syntaxinstitut.myapplication.datamodels.KategorienData
+import de.syntaxinstitut.myapplication.data.datamodels.KategorienData
 import de.syntaxinstitut.myapplication.ui.kategorienDetail.KategorienDetailViewModel
 
 class KategorienFragment : Fragment() {
@@ -28,8 +28,6 @@ class KategorienFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-      //  viewModel.getData()
 
 
         // Inflate the layout for this fragment
@@ -58,7 +56,10 @@ class KategorienFragment : Fragment() {
 
     }
 
-    // weiß woher welche Kategorie angesteuert wird
+    /**
+     * Wechselt zu Kategorien-Detail-Fragment bei Klick auf Item
+      */
+
     fun partItemClicked(partItem: KategorienData) {
         findNavController().navigate(
             KategorienFragmentDirections.actionKategorienFragmentToKategorienDetailFragment(

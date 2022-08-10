@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinstitut.myapplication.R
-import de.syntaxinstitut.myapplication.datamodels.OrdersData
-import org.w3c.dom.Text
+import de.syntaxinstitut.myapplication.data.datamodels.OrdersData
 
 class AuftragAdapter (
     private val dataset : List<OrdersData>,

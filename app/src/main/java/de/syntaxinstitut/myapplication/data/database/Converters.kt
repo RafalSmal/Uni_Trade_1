@@ -1,9 +1,9 @@
-package de.syntaxinstitut.myapplication.database
+package de.syntaxinstitut.myapplication.data.database
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
 
 class Converters {
     @TypeConverter

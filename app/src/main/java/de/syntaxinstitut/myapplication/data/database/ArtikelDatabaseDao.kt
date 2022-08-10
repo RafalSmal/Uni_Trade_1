@@ -1,9 +1,8 @@
-package de.syntaxinstitut.myapplication.database
+package de.syntaxinstitut.myapplication.data.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
-import de.syntaxinstitut.myapplication.datamodels.ArtikelData
-import de.syntaxinstitut.myapplication.datamodels.OrdersData
+import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.data.datamodels.OrdersData
 
 @Dao
 interface ArtikelDatabaseDao {

@@ -22,7 +22,9 @@ class AuftragFragment : Fragment() {
     private lateinit var binding: FragmentAuftragBinding
     private lateinit var auftragViewModel: AuftragViewModel
 
-
+    /**
+     * Diese Funktiuon wird zu beginn des Lifecycles eingefügt
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auftragViewModel = ViewModelProvider(requireActivity())[AuftragViewModel::class.java]

@@ -1,27 +1,20 @@
-package de.syntaxinstitut.myapplication.util
+package de.syntaxinstitut.myapplication.ui
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import de.syntaxinstitut.myapplication.MainActivity
-import de.syntaxinstitut.myapplication.database.ArtikelDatabase
-import de.syntaxinstitut.myapplication.database.ArtikelRepository
-import de.syntaxinstitut.myapplication.datamodels.ArtikelData
-import de.syntaxinstitut.myapplication.datamodels.OrdersData
+import androidx.lifecycle.*
+import de.syntaxinstitut.myapplication.data.AppRepository
+import de.syntaxinstitut.myapplication.data.api.ArtikelApi
+import de.syntaxinstitut.myapplication.data.database.ArtikelDatabase
+import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.data.datamodels.OrdersData
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.util.*
 
-class BasketViewModel(application: Application): AndroidViewModel(application) {
+class BasketViewModel(application: Application) : AndroidViewModel(application) {
     val basket = MutableLiveData<MutableList<ArtikelData>>()
     private val dataBase = ArtikelDatabase.getDatabase(application)
 
-    private val repository = ArtikelRepository(dataBase)
+    private val repository = AppRepository(ArtikelApi,dataBase)
 
     init {
         basket.value = mutableListOf()
@@ -38,30 +31,25 @@ class BasketViewModel(application: Application): AndroidViewModel(application) {
     }
 
 
-    //TODO  Wird in die Datenbank eingefügt
-
 
     fun removeBasket(artikelData: ArtikelData) {
         basket.value!!.remove(artikelData)
-
-        //TODO Datenbank einfügen
-
 
     }
 
 
     fun warenkorbEnde(
         firma: String,
-        lieferStrasse : String,
-        lieferOrt : String
-    ){
+        lieferStrasse: String,
+        lieferOrt: String
+    ) {
         var gesamtBrutto = 0.0
-        for (item in basket.value!!){
+        for (item in basket.value!!) {
             gesamtBrutto += (item.quantity * item.price!!)
         }
 
         val order = OrdersData(
-            auftragsNr = repository.getCountFromOrdersdata() + 1 ,
+            auftragsNr = repository.getCountFromOrdersdata() + 1,
             firma = firma,
             bestellDatum = LocalDate.now().toString(),
             auftragNetto = (gesamtBrutto / 1.19).toFloat(),
@@ -76,6 +64,18 @@ class BasketViewModel(application: Application): AndroidViewModel(application) {
             repository.insert(order)
         }
 
+    }
+
+    private val _loadingScreen = MutableLiveData<Boolean>()
+    val loadingScreen: LiveData<Boolean>
+        get() = _loadingScreen
+
+    fun showLoadingScreen (){
+        _loadingScreen.value = true
+    }
+
+    fun hideLoadingScreen() {
+        _loadingScreen.value = false
     }
 }
 

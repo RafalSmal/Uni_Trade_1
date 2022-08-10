@@ -1,21 +1,18 @@
 package de.syntaxinstitut.myapplication.ui.auftrag
 
 import android.app.Application
-import android.view.View
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.Index
-import de.syntaxinstitut.myapplication.database.ArtikelDatabase
-import de.syntaxinstitut.myapplication.database.ArtikelRepository
-import de.syntaxinstitut.myapplication.datamodels.ArtikelData
-import de.syntaxinstitut.myapplication.datamodels.OrdersData
+import de.syntaxinstitut.myapplication.data.AppRepository
+import de.syntaxinstitut.myapplication.data.api.ArtikelApi
+import de.syntaxinstitut.myapplication.data.database.ArtikelDatabase
+import de.syntaxinstitut.myapplication.data.datamodels.OrdersData
 import kotlinx.coroutines.launch
 
 class AuftragViewModel(application: Application): AndroidViewModel(application) {
     private val dataBase = ArtikelDatabase.getDatabase(application)
 
-    private val repository = ArtikelRepository(dataBase)
+    private val repository = AppRepository(ArtikelApi,dataBase)
 
     fun getAllOrders() : List<OrdersData>{
         return repository.getAllFromOrdersdata()

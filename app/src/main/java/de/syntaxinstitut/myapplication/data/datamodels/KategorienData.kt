@@ -1,4 +1,4 @@
-package de.syntaxinstitut.myapplication.datamodels
+package de.syntaxinstitut.myapplication.data.datamodels
 
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
 

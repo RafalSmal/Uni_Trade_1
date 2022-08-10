@@ -1,24 +1,18 @@
 package de.syntaxinstitut.myapplication.adapter
 
 
-import android.provider.ContactsContract
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.net.toUri
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import de.syntaxinstitut.myapplication.R
-import de.syntaxinstitut.myapplication.datamodels.ArtikelData
-import de.syntaxinstitut.myapplication.datamodels.KategorienData
+import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
 
 class KategorienDetailAdapter(
 

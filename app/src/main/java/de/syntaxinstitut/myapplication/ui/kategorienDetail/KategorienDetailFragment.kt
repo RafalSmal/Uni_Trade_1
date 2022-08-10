@@ -1,7 +1,6 @@
 package de.syntaxinstitut.myapplication.ui.kategorienDetail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
-import de.syntaxinstitut.myapplication.MainViewModel
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.KategorienDetailAdapter
 import de.syntaxinstitut.myapplication.databinding.FragmentKategorienDetailBinding
-import de.syntaxinstitut.myapplication.datamodels.ArtikelData
-import de.syntaxinstitut.myapplication.datamodels.KategorienData
-import de.syntaxinstitut.myapplication.util.BasketViewModel
+import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.ui.BasketViewModel
 
 class KategorienDetailFragment : Fragment() {
     private lateinit var binding: FragmentKategorienDetailBinding
@@ -26,14 +23,9 @@ class KategorienDetailFragment : Fragment() {
     private val viewModel: KategorienDetailViewModel by viewModels()
     val args: KategorienDetailFragmentArgs by navArgs()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
-
-
+    /**
+     * Layout wird erstellt
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +36,6 @@ class KategorienDetailFragment : Fragment() {
             container,
             false
         )
-        // Inflate the layout for this fragment
 
         return binding.root
     }
@@ -66,30 +57,6 @@ class KategorienDetailFragment : Fragment() {
                     }
             }
         )
-
-
-        // fun debugLoadArtikel(): List<ArtikelData> {
-        // val dataSourceLoad = DataSource().loadArtikel()
-        //  Log.d("Hello","dataSourceLoad")
-        //return dataSourceLoad
-
-        //}
-        // val dataSourceArtikel = debugLoadArtikel()
-        //Filtert die Artikel für die KategorienDetail Ansicht
-
-        //  val filterArtikel =
-        //      viewModel.filterByKategorie(unfilteredList = dataSourceArtikel, args.kategorieDetail)
-        // val dataset = viewModel.getData(basketViewModel.getBasket())
-
-
-//        binding.kategorienDetailRecycler.adapter = KategorienDetailAdapter(dataset){
-//            partItem: ArtikelData,add:Boolean-> addOrRemoveFromBasket(partItem,add)
-//        }
-
-        //  viewModel.articleCounter.observe(viewLifecycleOwner, Observer {
-
-        //  })
-
     }
 
     fun addOrRemoveFromBasket(artikelData: ArtikelData, add: Boolean) {

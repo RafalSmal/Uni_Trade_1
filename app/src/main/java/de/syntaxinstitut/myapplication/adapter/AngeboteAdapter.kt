@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import de.syntaxinstitut.myapplication.R
-import de.syntaxinstitut.myapplication.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
 
 class AngeboteAdapter(
     private val context: Context,

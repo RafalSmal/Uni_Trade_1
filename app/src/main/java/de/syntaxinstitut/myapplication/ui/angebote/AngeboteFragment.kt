@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -14,25 +13,28 @@ import androidx.recyclerview.widget.SnapHelper
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.AngeboteAdapter
 import de.syntaxinstitut.myapplication.databinding.FragmentAngeboteNewBinding
-import de.syntaxinstitut.myapplication.datamodels.ArtikelData
-import de.syntaxinstitut.myapplication.util.BasketViewModel
-import java.util.*
+import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
+import de.syntaxinstitut.myapplication.ui.BasketViewModel
 
 
 class AngeboteFragment : Fragment() {
 
     private lateinit var binding: FragmentAngeboteNewBinding
-   // private val basketViewModel: BasketViewModel by activityViewModels()
-    private lateinit var basketViewModel : BasketViewModel
+    private lateinit var basketViewModel: BasketViewModel
     private val viewModel: AngeboteViewModel by viewModels()
 
-
+    /**
+     * Diese Funktiuon wird zu beginn des Lifecycles eingefügt
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        basketViewModel = ViewModelProvider(requireActivity()) [BasketViewModel::class.java]
+        basketViewModel = ViewModelProvider(requireActivity())[BasketViewModel::class.java]
 
     }
 
+    /**
+     * Layout wird "aufgeblasen"
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,24 +45,29 @@ class AngeboteFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Hauptfunktionalität
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Der SnapHelper sorgt dafür,
-        // dass die RecyclerView immer auf das aktuelle List Item springt
+        /** Der SnapHelper sorgt dafür,
+        dass die RecyclerView immer auf das aktuelle List Item springt
+         */
         val helper: SnapHelper = PagerSnapHelper()
         helper.attachToRecyclerView(binding.angeboteNew)
 
-        //Log.d("Hallo",basketViewModel.getBasket().toString())
-       // val dataset = viewModel.getData(basketViewModel.getBasket())
 
+        /**Diese Funktion erstellt eine Courountine um von der Api alle Artikel zu laden
+         *
+         */
         viewModel.getData(basketViewModel.basket.value!!.toList())
 
         viewModel.angeboteChanged.observe(
             viewLifecycleOwner,
             androidx.lifecycle.Observer {
                 binding.angeboteNew.adapter =
-                    AngeboteAdapter(requireContext(),it){ partItem : ArtikelData, add: Boolean ->
+                    AngeboteAdapter(requireContext(), it) { partItem: ArtikelData, add: Boolean ->
                         addOrRemoveFromBasket(partItem, add)
                     }
             }
@@ -68,17 +75,10 @@ class AngeboteFragment : Fragment() {
     }
 
 
-//        binding.angeboteNew.adapter =
-//            AngeboteAdapter(requireContext(), dataset ) { partItem: ArtikelData,add:Boolean ->
-//               addOrRemoveFromBasket(partItem,add)
-//            }
-//
-//
-//    }
-    fun addOrRemoveFromBasket(artikelData: ArtikelData,add:Boolean){
-        if (add){
+    fun addOrRemoveFromBasket(artikelData: ArtikelData, add: Boolean) {
+        if (add) {
             basketViewModel.addBasket(artikelData)
-        }else{
+        } else {
             basketViewModel.removeBasket(artikelData)
         }
     }
