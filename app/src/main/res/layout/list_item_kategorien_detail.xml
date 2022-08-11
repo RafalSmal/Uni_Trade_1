@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="8dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="@color/cardView"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,8 +24,9 @@
             <ImageView
                 android:id="@+id/tomate_detail"
                 android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_height="0dp"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/tomate" />
@@ -65,22 +66,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="#000000"
+                android:foregroundTint="#FFEB3B"
+                android:tint="#FFEB3B"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/outCardKD"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/shoppingcard_add" />
+                app:srcCompat="@drawable/basket_plus_outline" />
 
             <TextView
                 android:id="@+id/counterKD"
                 android:layout_width="46dp"
                 android:layout_height="34dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:gravity="center"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/addCardKD"
-                app:layout_constraintStart_toEndOf="@+id/outCardKD"
+                app:layout_constraintEnd_toEndOf="@+id/artikelName_detail"
+                app:layout_constraintStart_toStartOf="@+id/artikelName_detail"
                 app:layout_constraintTop_toBottomOf="@+id/artikelName_detail"
                 tools:text="10" />
 
@@ -90,11 +93,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:backgroundTint="#000000"
+                android:tint="#FFEB3B"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tomate_detail"
                 app:layout_constraintTop_toBottomOf="@+id/artikelName_detail"
                 app:layout_constraintVertical_bias="0.125"
-                app:srcCompat="@drawable/shoppingcard_out" />
+                app:srcCompat="@drawable/basket_minus_outline"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

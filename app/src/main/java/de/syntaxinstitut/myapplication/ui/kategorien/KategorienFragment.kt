@@ -15,14 +15,19 @@ import de.syntaxinstitut.myapplication.databinding.FragmentKategorienBinding
 import de.syntaxinstitut.myapplication.data.datamodels.KategorienData
 import de.syntaxinstitut.myapplication.ui.kategorienDetail.KategorienDetailViewModel
 
+/**
+ * Dieses Fragment enthält die UI Ansicht der Kategorien
+ */
 class KategorienFragment : Fragment() {
+
+    /* ---------- Globale Variablen ---------- */
+
     private val viewModel: KategorienDetailViewModel by viewModels()
 
     private lateinit var binding: FragmentKategorienBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+
+    /* ---------- Lifecycle ---------- */
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -16,8 +16,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomescreenFragment : Fragment() {
+
+    /* ---------- Globale Variablen ---------- */
+
     private lateinit var binding: FragmentHomescreenBinding
     private val viewModel: BasketViewModel by activityViewModels()
+
+    /* ---------- Lifecycle ---------- */
 
     override fun onCreateView(
         inflater: LayoutInflater,

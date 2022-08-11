@@ -13,6 +13,10 @@ class AppRepository(
     private val database: ArtikelDatabase
 
 ) {
+
+    /**
+     * Diese Funktion holt eine Liste von Artikeln per Api - Call
+     */
     suspend fun getFromApi(): List<ArtikelData>? {
         try {
             return api.retrofitService.getArtikel()
@@ -36,6 +40,9 @@ class AppRepository(
             AppRepository(ArtikelApi,database)
     }
 
+    /**
+     * Datenbankfunktionen
+     */
     fun getAllFromOrdersdata(): List<OrdersData>{
         return  database.artikelPoolDao.getAllFromOrdersdata()
     }

@@ -16,16 +16,25 @@ import de.syntaxinstitut.myapplication.databinding.FragmentKategorienDetailBindi
 import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
 import de.syntaxinstitut.myapplication.ui.BasketViewModel
 
+/**
+ * Diese Klasse kümmert sich um die Ansicht der einzelnen Artikel der jeweiligen Kategorie
+ */
 class KategorienDetailFragment : Fragment() {
+
+    /* ---------- Globale Variablen ---------- */
+
     private lateinit var binding: FragmentKategorienDetailBinding
     private val basketViewModel: BasketViewModel by activityViewModels()
 
     private val viewModel: KategorienDetailViewModel by viewModels()
     val args: KategorienDetailFragmentArgs by navArgs()
 
+    /* ---------- Lifecycle ---------- */
+
     /**
      * Layout wird erstellt
      */
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +54,10 @@ class KategorienDetailFragment : Fragment() {
 
         viewModel.getData(args.kategorieDetail)
 
+        // Headline text
+        binding.kategorienDetailChoosen.text = args.kategorieDetail.toString()
+
+        // Beobachtet den Warenkorb
         viewModel.angeboteFiltered.observe(
             viewLifecycleOwner,
             Observer {
@@ -59,6 +72,9 @@ class KategorienDetailFragment : Fragment() {
         )
     }
 
+    /**
+     * Diese Funktion fügt oder entfernt Arikel aus dem Warenkorb
+     */
     fun addOrRemoveFromBasket(artikelData: ArtikelData, add: Boolean) {
         if (add) {
             basketViewModel.addBasket(artikelData)

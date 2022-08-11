@@ -16,12 +16,19 @@ import de.syntaxinstitut.myapplication.databinding.FragmentAngeboteNewBinding
 import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
 import de.syntaxinstitut.myapplication.ui.BasketViewModel
 
+/**
+ *Diese Klasse enthält das UI der Angebote
+ */
 
 class AngeboteFragment : Fragment() {
+
+    /* ---------- Globale Variablen ---------- */
 
     private lateinit var binding: FragmentAngeboteNewBinding
     private lateinit var basketViewModel: BasketViewModel
     private val viewModel: AngeboteViewModel by viewModels()
+
+    /* ---------- Lifecycle ---------- */
 
     /**
      * Diese Funktiuon wird zu beginn des Lifecycles eingefügt

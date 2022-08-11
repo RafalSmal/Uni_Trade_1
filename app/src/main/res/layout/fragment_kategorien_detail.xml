@@ -25,24 +25,23 @@
 
         <TextView
             android:id="@+id/kategorien_detail_choosen"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginStart="144dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="267dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7"
             tools:text="Gemüse" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/kategorienDetail_recycler"
-            android:layout_width="409dp"
-            android:layout_height="601dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="2dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

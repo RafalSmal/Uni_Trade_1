@@ -14,6 +14,9 @@ import coil.transform.RoundedCornersTransformation
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
 
+/**
+ *
+ */
 class AngeboteAdapter(
     private val context: Context,
     private val dataset: List<ArtikelData>,
@@ -31,10 +34,16 @@ class AngeboteAdapter(
         val minusItemA: ImageButton = view.findViewById(R.id.minusItemAN)
     }
 
+    /**
+     * Die Funktion ist für die größe der Liste Zuständig
+     */
     override fun getItemCount(): Int {
         return dataset.size
     }
 
+    /**
+     * Hier wird das Layout ( View ) erstellt
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item_angebote_new, parent, false)
@@ -42,6 +51,9 @@ class AngeboteAdapter(
     }
 
 
+    /**
+     * Hier findet der Recycler Prozess statt, die vom ViewHolder bereitgestellten Parameter werden geladen
+     */
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val saleItem = dataset[position]
 
@@ -55,6 +67,10 @@ class AngeboteAdapter(
 
         holder.productPrice.text = saleItem.price.toString()
 
+
+        /**
+         * Mit dieser Funktion kann man innerhalb des Warenkorbs die Anzahl der Artikel bestimmt werden
+         */
         fun changeBasket(value: Int) {
             if (saleItem.quantity == 0 && value < 0) {
                 return
@@ -64,17 +80,16 @@ class AngeboteAdapter(
             }
         }
 
-
-
         holder.productPrice.text = saleItem.price.toString() + " €"
         holder.productText.text = saleItem.productText.toString()
         holder.productImageView.load(imageUri)
-
         holder.detailCounterA.text = saleItem.quantity.toString()
+
         holder.plusItemA.setOnClickListener {
             changeBasket(1)
             clickListener(saleItem, true)
         }
+
         holder.minusItemA.setOnClickListener {
             changeBasket(-1)
             if (saleItem.quantity == 0) {

@@ -50,7 +50,7 @@ class WarenkorbAdapter(
 
         holder.warenkorbArtikel.text = warenkorb.productText
         holder.warenkorbAnzahl.text = warenkorb.quantity.toString()
-        holder.warenkorbPreis.text = String.format("%.2f",warenkorb.price!! * warenkorb.quantity)
+        holder.warenkorbPreis.text = String.format("%.2f",warenkorb.price!! * warenkorb.quantity) + " €"
         holder.warenkorbPic.load(imageUri) {
             transformations(RoundedCornersTransformation(10f))
         }

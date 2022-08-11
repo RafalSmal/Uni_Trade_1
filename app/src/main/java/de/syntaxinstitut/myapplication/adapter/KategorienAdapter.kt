@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.data.datamodels.KategorienData
 
+
 class KategorienAdapter(
     private val dataset: List<KategorienData>, private val clickListener: (KategorienData) -> Unit
 ) : RecyclerView.Adapter<KategorienAdapter.ItemViewHolder>() {

@@ -7,7 +7,9 @@ import de.syntaxinstitut.myapplication.data.datamodels.OrdersData
 @Dao
 interface ArtikelDatabaseDao {
 
-
+    /**
+     *
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItem(itemData: ArtikelData)
 

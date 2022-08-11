@@ -10,6 +10,9 @@ import de.syntaxinstitut.myapplication.data.datamodels.OrdersData
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 
+/**
+ * Diese Klasse enthält die Logik der App
+ */
 class BasketViewModel(application: Application) : AndroidViewModel(application) {
     val basket = MutableLiveData<MutableList<ArtikelData>>()
     private val dataBase = ArtikelDatabase.getDatabase(application)
@@ -20,6 +23,11 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
         basket.value = mutableListOf()
     }
 
+    /**
+     * Fügt Artikel in den Warenkorb hinzu+
+     *
+     * @param artikelData Der zu speichernde Artikel
+     */
     fun addBasket(artikelData: ArtikelData) {
         for (artikel in basket.value!!) {
             if (artikel.productText == artikelData.productText) {
@@ -30,24 +38,34 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
         basket.value!!.add(artikelData)
     }
 
-
-
+    /**
+     * Entfernt den Artikel aus dem Warenkorb
+     */
     fun removeBasket(artikelData: ArtikelData) {
         basket.value!!.remove(artikelData)
 
     }
 
 
+    /**
+     * Schließt den Warenkorb ab, speichert Auftrag in Datenbank
+     *
+     * @param firma Gibt die Firma, die die Bestellung ausführt an
+     * @param lieferStrasse Gibt die Lieferadresse an
+     * @param lieferOrt Gibt die Stadt an
+     */
     fun warenkorbEnde(
         firma: String,
         lieferStrasse: String,
         lieferOrt: String
     ) {
+        // Berechne Gesamtbrutto
         var gesamtBrutto = 0.0
         for (item in basket.value!!) {
             gesamtBrutto += (item.quantity * item.price!!)
         }
 
+        // Erstelle Order
         val order = OrdersData(
             auftragsNr = repository.getCountFromOrdersdata() + 1,
             firma = firma,
@@ -60,11 +78,14 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
 
         )
 
+        // Füge in Datenbank ein
         viewModelScope.launch {
             repository.insert(order)
         }
 
     }
+
+    // Macht die BottomNavBar (un)sichtbar um den Startscreen anzuzeign
 
     private val _loadingScreen = MutableLiveData<Boolean>()
     val loadingScreen: LiveData<Boolean>

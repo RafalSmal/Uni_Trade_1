@@ -30,7 +30,7 @@
             android:layout_marginStart="163dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="179dp"
-            android:fontFamily="@font/alfa_slab_one"
+            android:fontFamily="sans-serif"
             android:text="Warenkorb"
             android:textSize="34sp"
             android:textStyle="bold"

@@ -1,26 +1,30 @@
 package de.syntaxinstitut.myapplication.ui.auftrag
 
-import android.content.Context
 import android.os.Bundle
-import android.view.InflateException
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.adapter.AuftragAdapter
 import de.syntaxinstitut.myapplication.databinding.FragmentAuftragBinding
-import java.util.zip.Inflater
 
+/**
+ * Diese kümmert sich um die Erstellten Aufträge und zeigt die
+ * Daten / gekaufen Artikel der Kunden an
+ */
 class AuftragFragment : Fragment() {
+
+    /* ---------- Globale Variablen ---------- */
+
     private lateinit var binding: FragmentAuftragBinding
     private lateinit var auftragViewModel: AuftragViewModel
+
+    /* ---------- Lifecycle ---------- */
+
 
     /**
      * Diese Funktiuon wird zu beginn des Lifecycles eingefügt
@@ -40,8 +44,6 @@ class AuftragFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val allOrder = auftragViewModel.getAllOrders()
 
 
         binding.auftragRecycler.adapter =

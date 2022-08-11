@@ -15,8 +15,13 @@ import de.syntaxinstitut.myapplication.ui.auftrag.AuftragViewModel
 
 private lateinit var binding: FragmentMehrBinding
 
-
+/**
+ * Dieses Fragment ist dafür Zuständig, einen Kontakt anzulegen
+ */
 class MehrFragment : Fragment() {
+
+    /* ---------- Globale Variablen ---------- */
+
     private val viewModel: AuftragViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {

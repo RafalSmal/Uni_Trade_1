@@ -17,9 +17,16 @@ import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
 import de.syntaxinstitut.myapplication.ui.BasketViewModel
 
 class WarenkorbFragment : Fragment() {
+
+    /* ---------- Globale Variablen ---------- */
+
+    /** Das Binding für das View */
     private lateinit var binding: FragmentWarenkorbBinding
+
+    /** Das HauptViewModel  */
     private lateinit var basketViewModel: BasketViewModel
 
+    /* ---------- Lifecycle ---------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +76,7 @@ class WarenkorbFragment : Fragment() {
         }
     }
 
+    /* ---------- Öffentliche Methoden ---------- */
 
     fun addOrRemoveFromBasket(artikelData: ArtikelData, add: Boolean) {
         if (add) {

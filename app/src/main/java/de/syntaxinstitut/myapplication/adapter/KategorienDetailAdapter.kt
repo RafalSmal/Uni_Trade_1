@@ -14,6 +14,7 @@ import coil.transform.RoundedCornersTransformation
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.data.datamodels.ArtikelData
 
+
 class KategorienDetailAdapter(
 
     private val dataset: List<ArtikelData>,

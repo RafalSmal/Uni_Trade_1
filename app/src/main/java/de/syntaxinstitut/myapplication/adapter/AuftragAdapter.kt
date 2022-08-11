@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinstitut.myapplication.R
 import de.syntaxinstitut.myapplication.data.datamodels.OrdersData
 
+
 class AuftragAdapter (
     private val dataset : List<OrdersData>,
     private val context: Context
@@ -37,8 +38,8 @@ class AuftragAdapter (
 
         holder.auftragSendInput.text = item.auftragsNr.toString() + "-" + item.firma
         holder.datumInput.text = item.bestellDatum
-        holder.nettoBetrag.text = String.format("%.2f",item.auftragNetto)
-        holder.bruttoBetrag.text = String.format("%.2f",item.auftragBrutto)
+        holder.nettoBetrag.text = String.format("%.2f",item.auftragNetto) + " €"
+        holder.bruttoBetrag.text = String.format("%.2f",item.auftragBrutto) + " €"
         holder.adresseStrasse.text = item.lieferStrasse
         holder.adresseStadt.text = item.lieferOrt
 
@@ -71,8 +72,8 @@ class AuftragAdapter (
 
             // Bestücke TextViews mit Textinhalten
             artikelName.text = article.productText
-            artikelAnzahl.text = article.quantity.toString()
-            artikelPreis.text = article.price.toString()
+            artikelAnzahl.text = article.quantity.toString() + "x"
+            artikelPreis.text = article.price.toString() + " €"
 
 
             // Füge alles zusammen

@@ -6,6 +6,9 @@ import androidx.room.PrimaryKey
 import de.syntaxinstitut.myapplication.data.KategorieDetailEnum
 import kotlinx.parcelize.Parcelize
 
+/**
+ * Diese Klasse enthält Artikel mit Eigenschaften
+ */
 @Parcelize
 @Entity(tableName = "artikel_table")
 data class ArtikelData(
